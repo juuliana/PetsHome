@@ -87,6 +87,8 @@ public class JF_Cliente extends javax.swing.JFrame {
 
         jTabbedPane1.addTab("Consulta Cliente", jPanel1);
 
+        jPanel2.setMinimumSize(new java.awt.Dimension(337, 273));
+        jPanel2.setPreferredSize(new java.awt.Dimension(337, 273));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel2.setText("ID");
@@ -105,13 +107,13 @@ public class JF_Cliente extends javax.swing.JFrame {
 
         jLabel5.setText("Redigite a senha");
         jPanel2.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 120, -1, -1));
-        jPanel2.add(txt_redsenha, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 140, 130, 20));
+        jPanel2.add(txt_redsenha, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 140, 120, 30));
 
-        btn_ok.setIcon(new javax.swing.ImageIcon("C:\\Users\\luang\\Documents\\projetos\\PetsHome\\src\\main\\java\\Images\\correct.png")); // NOI18N
-        jPanel2.add(btn_ok, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 200, -1, -1));
+        btn_ok.setIcon(new javax.swing.ImageIcon("C:\\Users\\jumaj\\Documents\\projects\\PetsHome\\src\\main\\java\\Images\\correct.png")); // NOI18N
+        jPanel2.add(btn_ok, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 200, -1, -1));
 
-        btn_delete.setIcon(new javax.swing.ImageIcon("C:\\Users\\luang\\Documents\\projetos\\PetsHome\\src\\main\\java\\Images\\quit.png")); // NOI18N
-        jPanel2.add(btn_delete, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 200, -1, -1));
+        btn_delete.setIcon(new javax.swing.ImageIcon("C:\\Users\\jumaj\\Documents\\projects\\PetsHome\\src\\main\\java\\Images\\quit.png")); // NOI18N
+        jPanel2.add(btn_delete, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 200, -1, -1));
 
         jLabel1.setText("Nome");
         jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 80, -1, -1));
