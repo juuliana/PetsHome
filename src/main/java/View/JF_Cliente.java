@@ -107,10 +107,10 @@ public class JF_Cliente extends javax.swing.JFrame {
         jPanel2.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 120, -1, -1));
         jPanel2.add(txt_redsenha, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 140, 130, 20));
 
-        btn_ok.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/correct.png"))); // NOI18N
+        btn_ok.setIcon(new javax.swing.ImageIcon("C:\\Users\\luang\\Documents\\projetos\\PetsHome\\src\\main\\java\\Images\\correct.png")); // NOI18N
         jPanel2.add(btn_ok, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 200, -1, -1));
 
-        btn_delete.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/quit.png"))); // NOI18N
+        btn_delete.setIcon(new javax.swing.ImageIcon("C:\\Users\\luang\\Documents\\projetos\\PetsHome\\src\\main\\java\\Images\\quit.png")); // NOI18N
         jPanel2.add(btn_delete, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 200, -1, -1));
 
         jLabel1.setText("Nome");
