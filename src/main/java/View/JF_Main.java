@@ -90,6 +90,11 @@ public class JF_Main extends javax.swing.JFrame {
         jMenu3.setText("Sair");
 
         jMenuItem6.setText("Logout");
+        jMenuItem6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem6ActionPerformed(evt);
+            }
+        });
         jMenu3.add(jMenuItem6);
 
         jMenuItem7.setText("Sair do sistema");
@@ -103,14 +108,14 @@ public class JF_Main extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 724, Short.MAX_VALUE)
+            .addGap(0, 741, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 436, Short.MAX_VALUE)
+            .addGap(0, 534, Short.MAX_VALUE)
         );
 
-        setSize(new java.awt.Dimension(740, 496));
+        setSize(new java.awt.Dimension(757, 594));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
@@ -123,6 +128,10 @@ public class JF_Main extends javax.swing.JFrame {
         JF_Funcionario jfFun = new JF_Funcionario();
         jfFun.setVisible(true);
     }//GEN-LAST:event_jMenuItem3ActionPerformed
+
+    private void jMenuItem6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem6ActionPerformed
+        
+    }//GEN-LAST:event_jMenuItem6ActionPerformed
 
     /**
      * @param args the command line arguments
