@@ -48,7 +48,7 @@ public class JF_Main extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Sistema de Petshop - Pet's Home");
         setBackground(new java.awt.Color(255, 255, 255));
-        setResizable(false);
+        setPreferredSize(new java.awt.Dimension(1300, 700));
 
         jMenuBar1.setBackground(new java.awt.Color(51, 255, 0));
         jMenuBar1.setForeground(new java.awt.Color(255, 255, 255));
@@ -108,14 +108,14 @@ public class JF_Main extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 741, Short.MAX_VALUE)
+            .addGap(0, 600, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 534, Short.MAX_VALUE)
+            .addGap(0, 579, Short.MAX_VALUE)
         );
 
-        setSize(new java.awt.Dimension(757, 594));
+        pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
