@@ -85,8 +85,9 @@ public class JF_Cliente extends javax.swing.JFrame {
 
         jTabbedPane1.addTab("Consulta Cliente", jPanel1);
 
-        jPanel2.setMinimumSize(new java.awt.Dimension(337, 273));
-        jPanel2.setPreferredSize(new java.awt.Dimension(337, 273));
+        jPanel2.setMaximumSize(new java.awt.Dimension(32767, 32767));
+        jPanel2.setMinimumSize(new java.awt.Dimension(0, 0));
+        jPanel2.setPreferredSize(new java.awt.Dimension(500, 200));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         txt_senha.addActionListener(new java.awt.event.ActionListener() {
@@ -94,19 +95,19 @@ public class JF_Cliente extends javax.swing.JFrame {
                 txt_senhaActionPerformed(evt);
             }
         });
-        jPanel2.add(txt_senha, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 90, 190, -1));
+        jPanel2.add(txt_senha, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 110, 190, -1));
 
         jLabel4.setText("Senha");
-        jPanel2.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 70, -1, -1));
+        jPanel2.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 90, -1, -1));
 
         jLabel5.setText("Redigite a senha");
-        jPanel2.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 120, -1, -1));
-        jPanel2.add(txt_redsenha, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 140, 190, 20));
+        jPanel2.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 140, -1, -1));
+        jPanel2.add(txt_redsenha, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 160, 190, -1));
 
-        btn_ok.setIcon(new javax.swing.ImageIcon("C:\\Users\\luang\\Documents\\projetos\\PetsHome\\src\\main\\java\\Images\\add.png")); // NOI18N
+        btn_ok.setIcon(new javax.swing.ImageIcon("C:\\Users\\jumaj\\Downloads\\add.png")); // NOI18N
         jPanel2.add(btn_ok, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 240, -1, -1));
 
-        btn_delete.setIcon(new javax.swing.ImageIcon("C:\\Users\\luang\\Documents\\projetos\\PetsHome\\src\\main\\java\\Images\\quit.png")); // NOI18N
+        btn_delete.setIcon(new javax.swing.ImageIcon("C:\\Users\\jumaj\\Downloads\\quit.png")); // NOI18N
         jPanel2.add(btn_delete, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 240, -1, -1));
 
         jLabel1.setText("Nome");
@@ -119,11 +120,11 @@ public class JF_Cliente extends javax.swing.JFrame {
         jPanel2.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 120, -1, -1));
 
         jLabel8.setText("E-mail");
-        jPanel2.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 20, -1, -1));
+        jPanel2.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 40, -1, -1));
         jPanel2.add(txt_nome, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 40, 190, -1));
         jPanel2.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 90, 190, -1));
         jPanel2.add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 140, 190, -1));
-        jPanel2.add(jTextField3, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 40, 190, -1));
+        jPanel2.add(jTextField3, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 60, 190, -1));
 
         jLabel2.setText("CPF");
         jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 170, -1, -1));
@@ -143,13 +144,13 @@ public class JF_Cliente extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void txt_senhaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_senhaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txt_senhaActionPerformed
-
     private void jTextField4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField4ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField4ActionPerformed
+
+    private void txt_senhaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_senhaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txt_senhaActionPerformed
 
     /**
      * @param args the command line arguments
