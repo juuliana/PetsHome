@@ -5,15 +5,19 @@
  */
 package View;
 
+import Controller.ClienteDAO;
+import Model.Cliente;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author jumaj
  */
 public class JF_Cliente extends javax.swing.JFrame {
 
-    /**
-     * Creates new form JF_Usuario
-     */
+    Cliente cli = new Cliente();
+    ClienteDAO cliDAO = new ClienteDAO();
+    
     public JF_Cliente() {
         initComponents();
     }
@@ -30,7 +34,7 @@ public class JF_Cliente extends javax.swing.JFrame {
         jTabbedPane1 = new javax.swing.JTabbedPane();
         jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTableUsuario = new javax.swing.JTable();
+        jTableCliente = new javax.swing.JTable();
         jPanel2 = new javax.swing.JPanel();
         txt_senha = new javax.swing.JPasswordField();
         jLabel4 = new javax.swing.JLabel();
@@ -43,21 +47,31 @@ public class JF_Cliente extends javax.swing.JFrame {
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         txt_nome = new javax.swing.JTextField();
-        jTextField1 = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
+        cli_end = new javax.swing.JTextField();
+        cli_cont = new javax.swing.JTextField();
         jTextField3 = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         jTextField4 = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setResizable(false);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowOpened(java.awt.event.WindowEvent evt) {
+                formWindowOpened(evt);
+            }
+        });
 
         jTabbedPane1.setToolTipText("Consulta Usuário");
+        jTabbedPane1.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                jTabbedPane1StateChanged(evt);
+            }
+        });
 
         jPanel1.setToolTipText("");
         jPanel1.setLayout(new java.awt.BorderLayout());
 
-        jTableUsuario.setModel(new javax.swing.table.DefaultTableModel(
+        jTableCliente.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -76,16 +90,15 @@ public class JF_Cliente extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane1.setViewportView(jTableUsuario);
-        if (jTableUsuario.getColumnModel().getColumnCount() > 0) {
-            jTableUsuario.getColumnModel().getColumn(0).setHeaderValue("ID");
+        jScrollPane1.setViewportView(jTableCliente);
+        if (jTableCliente.getColumnModel().getColumnCount() > 0) {
+            jTableCliente.getColumnModel().getColumn(0).setHeaderValue("ID");
         }
 
         jPanel1.add(jScrollPane1, java.awt.BorderLayout.CENTER);
 
         jTabbedPane1.addTab("Consulta Cliente", jPanel1);
 
-        jPanel2.setMaximumSize(new java.awt.Dimension(32767, 32767));
         jPanel2.setMinimumSize(new java.awt.Dimension(0, 0));
         jPanel2.setPreferredSize(new java.awt.Dimension(500, 200));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -105,6 +118,11 @@ public class JF_Cliente extends javax.swing.JFrame {
         jPanel2.add(txt_redsenha, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 160, 190, -1));
 
         btn_ok.setIcon(new javax.swing.ImageIcon("C:\\Users\\jumaj\\Downloads\\add.png")); // NOI18N
+        btn_ok.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_okActionPerformed(evt);
+            }
+        });
         jPanel2.add(btn_ok, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 240, -1, -1));
 
         btn_delete.setIcon(new javax.swing.ImageIcon("C:\\Users\\jumaj\\Downloads\\quit.png")); // NOI18N
@@ -122,8 +140,8 @@ public class JF_Cliente extends javax.swing.JFrame {
         jLabel8.setText("E-mail");
         jPanel2.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 40, -1, -1));
         jPanel2.add(txt_nome, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 40, 190, -1));
-        jPanel2.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 90, 190, -1));
-        jPanel2.add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 140, 190, -1));
+        jPanel2.add(cli_end, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 90, 190, -1));
+        jPanel2.add(cli_cont, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 140, 190, -1));
         jPanel2.add(jTextField3, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 60, 190, -1));
 
         jLabel2.setText("CPF");
@@ -151,6 +169,28 @@ public class JF_Cliente extends javax.swing.JFrame {
     private void txt_senhaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_senhaActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txt_senhaActionPerformed
+
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+        cliDAO.consultarTodos(jTableCliente, this);
+    }//GEN-LAST:event_formWindowOpened
+
+    private void btn_okActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_okActionPerformed
+        cli.setCli_nome(txt_nome.getText());
+        cli.setCli_senha(cli_end.getText());
+        
+        if(txt_senha.getText().equals(txt_redsenha.getText())){
+            cliDAO.inserirCliente(cli, this);
+        }else{
+            JOptionPane.showMessageDialog(this, "Senhas não conferem");
+            txt_senha.setText(null);
+            txt_redsenha.setText(null);
+            txt_senha.requestFocus();
+        }
+    }//GEN-LAST:event_btn_okActionPerformed
+
+    private void jTabbedPane1StateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jTabbedPane1StateChanged
+        cliDAO.consultarTodos(jTableCliente, this);
+    }//GEN-LAST:event_jTabbedPane1StateChanged
 
     /**
      * @param args the command line arguments
@@ -191,6 +231,8 @@ public class JF_Cliente extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn_delete;
     private javax.swing.JButton btn_ok;
+    private javax.swing.JTextField cli_cont;
+    private javax.swing.JTextField cli_end;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel4;
@@ -202,9 +244,7 @@ public class JF_Cliente extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTabbedPane jTabbedPane1;
-    private javax.swing.JTable jTableUsuario;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
+    private javax.swing.JTable jTableCliente;
     private javax.swing.JTextField jTextField3;
     private javax.swing.JTextField jTextField4;
     private javax.swing.JTextField txt_nome;

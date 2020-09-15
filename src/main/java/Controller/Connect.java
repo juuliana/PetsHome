@@ -20,4 +20,13 @@ public class Connect {
             return null;
         }
    }
+    
+   public static void desconector(Connection con){
+       try {
+           con.close();
+           System.out.println("Banco Desconectado");
+       } catch (Exception e) {
+           System.out.println("Erro ao desconectar: " + e);
+       }
+   }
 }
