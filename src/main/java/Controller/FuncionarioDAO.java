@@ -17,7 +17,7 @@ public class FuncionarioDAO {
     //Método de Consultar Todos os Registros
     public void consultarTodos(JTable tabFuncionario, JFrame jfFuncionario){
         
-        String sql = "select id as ID, nome as Nome, enderecoID as Endereco from funcionarios";
+        String sql = "select id as ID, nome as Nome, usuario as Usuario from funcionario";
         
         try {
             conexao = Connect.conectar();

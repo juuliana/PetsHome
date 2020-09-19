@@ -16,7 +16,7 @@ public class ClienteDAO {
     //Método de Consultar Todos os Registros
     public void consultarTodos(JTable tabCliente, JFrame jfcliente){
         
-        String sql = "select id as ID, nome as Nome, contato as Contato, enderecoID as Endereco from Cliente";
+        String sql = "select id as ID, nome as Nome, contato as Contato from Cliente";
         
         try {
             conexao = Connect.conectar();
@@ -48,6 +48,7 @@ public class ClienteDAO {
             pst.execute();
             
             JOptionPane.showMessageDialog(jfcliente, "Cliente inserido com sucesso!");
+            
         } catch (Exception e) {
             JOptionPane.showMessageDialog(jfcliente, "Erro ao inserir cliente: " + e);
         }
