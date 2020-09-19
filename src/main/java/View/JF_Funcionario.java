@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package View;
 
 import Controller.FuncionarioDAO;
@@ -16,10 +11,12 @@ import javax.swing.JOptionPane;
 public class JF_Funcionario extends javax.swing.JFrame {
 
     Funcionario func = new Funcionario();
-    FuncionarioDAO funcDao = new FuncionarioDAO();
+    FuncionarioDAO funcDAO = new FuncionarioDAO();
     
     public JF_Funcionario() {
         initComponents();
+        
+        setDefaultCloseOperation(DISPOSE_ON_CLOSE);
     }
 
     /**
@@ -33,8 +30,8 @@ public class JF_Funcionario extends javax.swing.JFrame {
 
         jTabbedPane1 = new javax.swing.JTabbedPane();
         jPanel1 = new javax.swing.JPanel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tabFuncionario1 = new javax.swing.JScrollPane();
+        tabFuncionario = new javax.swing.JTable();
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         txt_nome = new javax.swing.JTextField();
@@ -49,10 +46,21 @@ public class JF_Funcionario extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(467, 273));
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowOpened(java.awt.event.WindowEvent evt) {
+                formWindowOpened(evt);
+            }
+        });
+
+        jTabbedPane1.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                jTabbedPane1StateChanged(evt);
+            }
+        });
 
         jPanel1.setLayout(new java.awt.BorderLayout());
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tabFuncionario.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null},
                 {null, null},
@@ -71,9 +79,9 @@ public class JF_Funcionario extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane1.setViewportView(jTable1);
+        tabFuncionario1.setViewportView(tabFuncionario);
 
-        jPanel1.add(jScrollPane1, java.awt.BorderLayout.CENTER);
+        jPanel1.add(tabFuncionario1, java.awt.BorderLayout.CENTER);
 
         jTabbedPane1.addTab("Consulta Funcionário", jPanel1);
 
@@ -91,6 +99,12 @@ public class JF_Funcionario extends javax.swing.JFrame {
         btn_ok.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_okActionPerformed(evt);
+            }
+        });
+
+        btn_delete.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_deleteActionPerformed(evt);
             }
         });
 
@@ -176,9 +190,30 @@ public class JF_Funcionario extends javax.swing.JFrame {
         else if(txt_senha.getText().length() < 6){
             JOptionPane.showMessageDialog(null, "Senhas com menos de 6 dígitos não são permitidas!");
         }else{
-             funcDao.inserirFuncionario(func, this);
+             funcDAO.inserirFuncionario(func, this);
+             txt_nome.setText(null);
+             txt_usuario.setText(null);
+             txt_senha.setText(null);
+             txt_redsenha.setText(null);
+             txt_nome.requestFocus();
         }     
     }//GEN-LAST:event_btn_okActionPerformed
+
+    private void jTabbedPane1StateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jTabbedPane1StateChanged
+        funcDAO.consultarTodos(tabFuncionario, this);
+    }//GEN-LAST:event_jTabbedPane1StateChanged
+
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+        funcDAO.consultarTodos(tabFuncionario, this);
+    }//GEN-LAST:event_formWindowOpened
+
+    private void btn_deleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_deleteActionPerformed
+        txt_nome.setText(null);
+        txt_usuario.setText(null);
+        txt_senha.setText(null);
+        txt_redsenha.setText(null);
+        txt_nome.requestFocus();
+    }//GEN-LAST:event_btn_deleteActionPerformed
 
     /**
      * @param args the command line arguments
@@ -224,9 +259,9 @@ public class JF_Funcionario extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTabbedPane jTabbedPane1;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JTable tabFuncionario;
+    private javax.swing.JScrollPane tabFuncionario1;
     private javax.swing.JTextField txt_nome;
     private javax.swing.JPasswordField txt_redsenha;
     private javax.swing.JPasswordField txt_senha;
