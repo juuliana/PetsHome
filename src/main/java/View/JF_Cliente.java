@@ -20,6 +20,8 @@ public class JF_Cliente extends javax.swing.JFrame {
     
     public JF_Cliente() {
         initComponents();
+        
+        setDefaultCloseOperation(DISPOSE_ON_CLOSE);
     }
 
     /**
@@ -34,7 +36,7 @@ public class JF_Cliente extends javax.swing.JFrame {
         jTabbedPane1 = new javax.swing.JTabbedPane();
         jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTableCliente = new javax.swing.JTable();
+        tabCliente = new javax.swing.JTable();
         jPanel2 = new javax.swing.JPanel();
         txt_senha = new javax.swing.JPasswordField();
         jLabel4 = new javax.swing.JLabel();
@@ -48,8 +50,6 @@ public class JF_Cliente extends javax.swing.JFrame {
         txt_nome = new javax.swing.JTextField();
         txt_contato = new javax.swing.JTextField();
         txt_email = new javax.swing.JTextField();
-        jLabel2 = new javax.swing.JLabel();
-        txt_cpf = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setResizable(false);
@@ -69,29 +69,26 @@ public class JF_Cliente extends javax.swing.JFrame {
         jPanel1.setToolTipText("");
         jPanel1.setLayout(new java.awt.BorderLayout());
 
-        jTableCliente.setModel(new javax.swing.table.DefaultTableModel(
+        tabCliente.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null}
             },
             new String [] {
-                "ID", "Nome do Cliente", "Contato", "E-mail"
+                "ID", "Nome do Cliente", "Contato"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, true, true
+                false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane1.setViewportView(jTableCliente);
-        if (jTableCliente.getColumnModel().getColumnCount() > 0) {
-            jTableCliente.getColumnModel().getColumn(0).setHeaderValue("ID");
-        }
+        jScrollPane1.setViewportView(tabCliente);
 
         jPanel1.add(jScrollPane1, java.awt.BorderLayout.CENTER);
 
@@ -106,14 +103,14 @@ public class JF_Cliente extends javax.swing.JFrame {
                 txt_senhaActionPerformed(evt);
             }
         });
-        jPanel2.add(txt_senha, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 110, 190, -1));
+        jPanel2.add(txt_senha, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 80, 190, -1));
 
         jLabel4.setText("Senha");
-        jPanel2.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 90, -1, -1));
+        jPanel2.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 60, -1, -1));
 
         jLabel5.setText("Redigite a senha");
-        jPanel2.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 140, -1, -1));
-        jPanel2.add(txt_redsenha, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 160, 190, -1));
+        jPanel2.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 120, -1, -1));
+        jPanel2.add(txt_redsenha, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 140, 190, -1));
 
         btn_ok.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -121,6 +118,12 @@ public class JF_Cliente extends javax.swing.JFrame {
             }
         });
         jPanel2.add(btn_ok, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 240, -1, -1));
+
+        btn_delete.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_deleteActionPerformed(evt);
+            }
+        });
         jPanel2.add(btn_delete, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 240, -1, -1));
 
         jLabel1.setText("Nome");
@@ -130,20 +133,10 @@ public class JF_Cliente extends javax.swing.JFrame {
         jPanel2.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 90, -1, -1));
 
         jLabel8.setText("E-mail");
-        jPanel2.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 40, -1, -1));
+        jPanel2.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 140, -1, -1));
         jPanel2.add(txt_nome, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 60, 190, -1));
         jPanel2.add(txt_contato, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 110, 190, -1));
-        jPanel2.add(txt_email, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 60, 190, -1));
-
-        jLabel2.setText("CPF");
-        jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 140, -1, -1));
-
-        txt_cpf.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txt_cpfActionPerformed(evt);
-            }
-        });
-        jPanel2.add(txt_cpf, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 160, 190, -1));
+        jPanel2.add(txt_email, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 160, 190, -1));
 
         jTabbedPane1.addTab("Manutenção de Clientes", jPanel2);
 
@@ -153,22 +146,17 @@ public class JF_Cliente extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void txt_cpfActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_cpfActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txt_cpfActionPerformed
-
     private void txt_senhaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_senhaActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txt_senhaActionPerformed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-        cliDAO.consultarTodos(jTableCliente, this);
+        cliDAO.consultarTodos(tabCliente, this);
     }//GEN-LAST:event_formWindowOpened
 
     private void btn_okActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_okActionPerformed
         cli.setCli_nome(txt_nome.getText());
         cli.setCli_senha(txt_senha.getText());
-        cli.setCli_cpf(txt_cpf.getText());
         cli.setCli_contato(txt_contato.getText());
         cli.setCli_email(txt_email.getText());        
         
@@ -183,12 +171,27 @@ public class JF_Cliente extends javax.swing.JFrame {
         }
         else{             
             cliDAO.inserirCliente(cli, this);
+            txt_nome.setText(null);
+            txt_contato.setText(null);
+            txt_email.setText(null);
+            txt_senha.setText(null);
+            txt_redsenha.setText(null);
+            txt_nome.requestFocus();
         }
     }//GEN-LAST:event_btn_okActionPerformed
 
     private void jTabbedPane1StateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jTabbedPane1StateChanged
-        cliDAO.consultarTodos(jTableCliente, this);
+        cliDAO.consultarTodos(tabCliente, this);
     }//GEN-LAST:event_jTabbedPane1StateChanged
+
+    private void btn_deleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_deleteActionPerformed
+        txt_nome.setText(null);
+        txt_contato.setText(null);
+        txt_email.setText(null);
+        txt_senha.setText(null);
+        txt_redsenha.setText(null);
+        txt_nome.requestFocus();
+    }//GEN-LAST:event_btn_deleteActionPerformed
 
     /**
      * @param args the command line arguments
@@ -230,7 +233,6 @@ public class JF_Cliente extends javax.swing.JFrame {
     private javax.swing.JButton btn_delete;
     private javax.swing.JButton btn_ok;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel7;
@@ -239,9 +241,8 @@ public class JF_Cliente extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTabbedPane jTabbedPane1;
-    private javax.swing.JTable jTableCliente;
+    private javax.swing.JTable tabCliente;
     private javax.swing.JTextField txt_contato;
-    private javax.swing.JTextField txt_cpf;
     private javax.swing.JTextField txt_email;
     private javax.swing.JTextField txt_nome;
     private javax.swing.JPasswordField txt_redsenha;
