@@ -47,11 +47,11 @@ public class JF_Cliente extends javax.swing.JFrame {
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         txt_nome = new javax.swing.JTextField();
-        cli_end = new javax.swing.JTextField();
-        cli_cont = new javax.swing.JTextField();
-        jTextField3 = new javax.swing.JTextField();
+        txt_end = new javax.swing.JTextField();
+        txt_contato = new javax.swing.JTextField();
+        txt_email = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
-        jTextField4 = new javax.swing.JTextField();
+        txt_cpf = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setResizable(false);
@@ -100,7 +100,7 @@ public class JF_Cliente extends javax.swing.JFrame {
         jTabbedPane1.addTab("Consulta Cliente", jPanel1);
 
         jPanel2.setMinimumSize(new java.awt.Dimension(0, 0));
-        jPanel2.setPreferredSize(new java.awt.Dimension(500, 200));
+        jPanel2.setPreferredSize(new java.awt.Dimension(505, 150));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         txt_senha.addActionListener(new java.awt.event.ActionListener() {
@@ -140,19 +140,19 @@ public class JF_Cliente extends javax.swing.JFrame {
         jLabel8.setText("E-mail");
         jPanel2.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 40, -1, -1));
         jPanel2.add(txt_nome, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 40, 190, -1));
-        jPanel2.add(cli_end, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 90, 190, -1));
-        jPanel2.add(cli_cont, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 140, 190, -1));
-        jPanel2.add(jTextField3, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 60, 190, -1));
+        jPanel2.add(txt_end, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 90, 190, -1));
+        jPanel2.add(txt_contato, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 140, 190, -1));
+        jPanel2.add(txt_email, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 60, 190, -1));
 
         jLabel2.setText("CPF");
         jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 170, -1, -1));
 
-        jTextField4.addActionListener(new java.awt.event.ActionListener() {
+        txt_cpf.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField4ActionPerformed(evt);
+                txt_cpfActionPerformed(evt);
             }
         });
-        jPanel2.add(jTextField4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 190, 190, -1));
+        jPanel2.add(txt_cpf, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 190, 190, -1));
 
         jTabbedPane1.addTab("Manutenção de Clientes", jPanel2);
 
@@ -162,9 +162,9 @@ public class JF_Cliente extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTextField4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField4ActionPerformed
+    private void txt_cpfActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_cpfActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField4ActionPerformed
+    }//GEN-LAST:event_txt_cpfActionPerformed
 
     private void txt_senhaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_senhaActionPerformed
         // TODO add your handling code here:
@@ -176,7 +176,7 @@ public class JF_Cliente extends javax.swing.JFrame {
 
     private void btn_okActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_okActionPerformed
         cli.setCli_nome(txt_nome.getText());
-        cli.setCli_senha(cli_end.getText());
+        cli.setCli_senha(txt_end.getText());
         
         if(txt_senha.getText().equals(txt_redsenha.getText())){
             cliDAO.inserirCliente(cli, this);
@@ -231,8 +231,6 @@ public class JF_Cliente extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn_delete;
     private javax.swing.JButton btn_ok;
-    private javax.swing.JTextField cli_cont;
-    private javax.swing.JTextField cli_end;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel4;
@@ -245,8 +243,10 @@ public class JF_Cliente extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JTable jTableCliente;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
+    private javax.swing.JTextField txt_contato;
+    private javax.swing.JTextField txt_cpf;
+    private javax.swing.JTextField txt_email;
+    private javax.swing.JTextField txt_end;
     private javax.swing.JTextField txt_nome;
     private javax.swing.JPasswordField txt_redsenha;
     private javax.swing.JPasswordField txt_senha;
