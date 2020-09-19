@@ -43,11 +43,9 @@ public class JF_Cliente extends javax.swing.JFrame {
         btn_ok = new javax.swing.JButton();
         btn_delete = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         txt_nome = new javax.swing.JTextField();
-        txt_end = new javax.swing.JTextField();
         txt_contato = new javax.swing.JTextField();
         txt_email = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
@@ -117,42 +115,35 @@ public class JF_Cliente extends javax.swing.JFrame {
         jPanel2.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 140, -1, -1));
         jPanel2.add(txt_redsenha, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 160, 190, -1));
 
-        btn_ok.setIcon(new javax.swing.ImageIcon("C:\\Users\\jumaj\\Downloads\\add.png")); // NOI18N
         btn_ok.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_okActionPerformed(evt);
             }
         });
         jPanel2.add(btn_ok, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 240, -1, -1));
-
-        btn_delete.setIcon(new javax.swing.ImageIcon("C:\\Users\\jumaj\\Downloads\\quit.png")); // NOI18N
         jPanel2.add(btn_delete, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 240, -1, -1));
 
         jLabel1.setText("Nome");
-        jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, -1, -1));
-
-        jLabel6.setText("Endereço");
-        jPanel2.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 70, -1, -1));
+        jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 40, -1, -1));
 
         jLabel7.setText("Contato");
-        jPanel2.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 120, -1, -1));
+        jPanel2.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 90, -1, -1));
 
         jLabel8.setText("E-mail");
         jPanel2.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 40, -1, -1));
-        jPanel2.add(txt_nome, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 40, 190, -1));
-        jPanel2.add(txt_end, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 90, 190, -1));
-        jPanel2.add(txt_contato, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 140, 190, -1));
+        jPanel2.add(txt_nome, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 60, 190, -1));
+        jPanel2.add(txt_contato, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 110, 190, -1));
         jPanel2.add(txt_email, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 60, 190, -1));
 
         jLabel2.setText("CPF");
-        jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 170, -1, -1));
+        jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 140, -1, -1));
 
         txt_cpf.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txt_cpfActionPerformed(evt);
             }
         });
-        jPanel2.add(txt_cpf, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 190, 190, -1));
+        jPanel2.add(txt_cpf, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 160, 190, -1));
 
         jTabbedPane1.addTab("Manutenção de Clientes", jPanel2);
 
@@ -176,15 +167,22 @@ public class JF_Cliente extends javax.swing.JFrame {
 
     private void btn_okActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_okActionPerformed
         cli.setCli_nome(txt_nome.getText());
-        cli.setCli_senha(txt_end.getText());
+        cli.setCli_senha(txt_senha.getText());
+        cli.setCli_cpf(txt_cpf.getText());
+        cli.setCli_contato(txt_contato.getText());
+        cli.setCli_email(txt_email.getText());        
         
-        if(txt_senha.getText().equals(txt_redsenha.getText())){
-            cliDAO.inserirCliente(cli, this);
-        }else{
+        if(!txt_senha.getText().equals(txt_redsenha.getText())){
             JOptionPane.showMessageDialog(this, "Senhas não conferem");
             txt_senha.setText(null);
             txt_redsenha.setText(null);
             txt_senha.requestFocus();
+  
+        }else if(txt_senha.getText().length() < 6){
+            JOptionPane.showMessageDialog(this, "Senhas com menos de 6 dígitos não são permitidas!");
+        }
+        else{             
+            cliDAO.inserirCliente(cli, this);
         }
     }//GEN-LAST:event_btn_okActionPerformed
 
@@ -235,7 +233,6 @@ public class JF_Cliente extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
@@ -246,7 +243,6 @@ public class JF_Cliente extends javax.swing.JFrame {
     private javax.swing.JTextField txt_contato;
     private javax.swing.JTextField txt_cpf;
     private javax.swing.JTextField txt_email;
-    private javax.swing.JTextField txt_end;
     private javax.swing.JTextField txt_nome;
     private javax.swing.JPasswordField txt_redsenha;
     private javax.swing.JPasswordField txt_senha;

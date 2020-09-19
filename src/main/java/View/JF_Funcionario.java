@@ -5,15 +5,19 @@
  */
 package View;
 
+import Controller.FuncionarioDAO;
+import Model.Funcionario;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author jumaj
  */
 public class JF_Funcionario extends javax.swing.JFrame {
 
-    /**
-     * Creates new form JF_Funcionario
-     */
+    Funcionario func = new Funcionario();
+    FuncionarioDAO funcDao = new FuncionarioDAO();
+    
     public JF_Funcionario() {
         initComponents();
     }
@@ -42,8 +46,6 @@ public class JF_Funcionario extends javax.swing.JFrame {
         txt_redsenha = new javax.swing.JPasswordField();
         btn_ok = new javax.swing.JButton();
         btn_delete = new javax.swing.JButton();
-        jLabel2 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(467, 273));
@@ -86,11 +88,11 @@ public class JF_Funcionario extends javax.swing.JFrame {
 
         jLabel5.setText("Redigite a senha");
 
-        btn_ok.setIcon(new javax.swing.ImageIcon("C:\\Users\\jumaj\\Downloads\\add.png")); // NOI18N
-
-        btn_delete.setIcon(new javax.swing.ImageIcon("C:\\Users\\jumaj\\Downloads\\quit.png")); // NOI18N
-
-        jLabel2.setText("CPF");
+        btn_ok.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_okActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -99,15 +101,11 @@ public class JF_Funcionario extends javax.swing.JFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(24, 24, 24)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(jLabel2)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(jTextField1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 160, Short.MAX_VALUE)
                             .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txt_nome, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txt_nome, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 160, Short.MAX_VALUE)
                             .addComponent(txt_usuario, javax.swing.GroupLayout.Alignment.LEADING))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 87, Short.MAX_VALUE)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -146,11 +144,7 @@ public class JF_Funcionario extends javax.swing.JFrame {
                         .addComponent(jLabel5)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(txt_redsenha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 22, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 137, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(btn_ok)
                     .addComponent(btn_delete))
@@ -164,6 +158,27 @@ public class JF_Funcionario extends javax.swing.JFrame {
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btn_okActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_okActionPerformed
+        // TODO add your handling code here:
+        func.setFunc_nome(txt_nome.getText());
+        func.setFunc_email(txt_usuario.getText());
+        func.setFunc_senha(txt_senha.getText());
+        
+        if(!txt_redsenha.getText().equals(txt_senha.getText())){
+            JOptionPane.showMessageDialog(this, "Senhas não conferem");
+           
+            txt_senha.setText(null);
+            txt_redsenha.setText(null);
+            txt_senha.requestFocus();
+        }
+        
+        else if(txt_senha.getText().length() < 6){
+            JOptionPane.showMessageDialog(null, "Senhas com menos de 6 dígitos não são permitidas!");
+        }else{
+             funcDao.inserirFuncionario(func, this);
+        }     
+    }//GEN-LAST:event_btn_okActionPerformed
 
     /**
      * @param args the command line arguments
@@ -204,7 +219,6 @@ public class JF_Funcionario extends javax.swing.JFrame {
     private javax.swing.JButton btn_delete;
     private javax.swing.JButton btn_ok;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -213,7 +227,6 @@ public class JF_Funcionario extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JTable jTable1;
-    private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField txt_nome;
     private javax.swing.JPasswordField txt_redsenha;
     private javax.swing.JPasswordField txt_senha;
