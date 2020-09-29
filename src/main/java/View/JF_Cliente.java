@@ -6,6 +6,7 @@
 package View;
 
 import Controller.ClienteDAO;
+import Functions.FuncCliente;
 import Model.Cliente;
 import javax.swing.JOptionPane;
 
@@ -17,6 +18,9 @@ public class JF_Cliente extends javax.swing.JFrame {
 
     Cliente cli = new Cliente();
     ClienteDAO cliDAO = new ClienteDAO();
+    FuncCliente funccli = new FuncCliente();
+
+    int flag;
     
     public JF_Cliente() {
         initComponents();
@@ -43,13 +47,17 @@ public class JF_Cliente extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         txt_redsenha = new javax.swing.JPasswordField();
         btn_ok = new javax.swing.JButton();
-        btn_delete = new javax.swing.JButton();
+        btn_cancel = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         txt_nome = new javax.swing.JTextField();
         txt_contato = new javax.swing.JTextField();
         txt_email = new javax.swing.JTextField();
+        txt_id = new javax.swing.JTextField();
+        jLabel2 = new javax.swing.JLabel();
+        btn_delete = new javax.swing.JButton();
+        btn_update = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setResizable(false);
@@ -88,6 +96,11 @@ public class JF_Cliente extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
+        tabCliente.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tabClienteMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(tabCliente);
 
         jPanel1.add(jScrollPane1, java.awt.BorderLayout.CENTER);
@@ -103,40 +116,71 @@ public class JF_Cliente extends javax.swing.JFrame {
                 txt_senhaActionPerformed(evt);
             }
         });
-        jPanel2.add(txt_senha, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 80, 190, -1));
+        jPanel2.add(txt_senha, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 110, 190, -1));
 
-        jLabel4.setText("Senha");
-        jPanel2.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 60, -1, -1));
+        jLabel4.setText("* Senha");
+        jPanel2.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 90, -1, -1));
 
-        jLabel5.setText("Redigite a senha");
-        jPanel2.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 120, -1, -1));
-        jPanel2.add(txt_redsenha, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 140, 190, -1));
+        jLabel5.setText("* Redigite a senha");
+        jPanel2.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 150, -1, -1));
+        jPanel2.add(txt_redsenha, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 170, 190, -1));
 
+        btn_ok.setIcon(new javax.swing.ImageIcon("C:\\Users\\jumaj\\Desktop\\correct.png")); // NOI18N
+        btn_ok.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btn_ok.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_okActionPerformed(evt);
             }
         });
-        jPanel2.add(btn_ok, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 240, -1, -1));
+        jPanel2.add(btn_ok, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 240, -1, -1));
 
+        btn_cancel.setIcon(new javax.swing.ImageIcon("C:\\Users\\jumaj\\Desktop\\quit.png")); // NOI18N
+        btn_cancel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btn_cancel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_cancelActionPerformed(evt);
+            }
+        });
+        jPanel2.add(btn_cancel, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 240, -1, -1));
+
+        jLabel1.setText("* Nome");
+        jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 90, -1, -1));
+
+        jLabel7.setText("Contato");
+        jPanel2.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 150, -1, -1));
+
+        jLabel8.setText("* E-mail");
+        jPanel2.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 30, -1, -1));
+        jPanel2.add(txt_nome, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 110, 200, -1));
+        jPanel2.add(txt_contato, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 170, 200, -1));
+        jPanel2.add(txt_email, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 50, 190, -1));
+
+        txt_id.setEditable(false);
+        txt_id.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_idActionPerformed(evt);
+            }
+        });
+        jPanel2.add(txt_id, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 50, 50, -1));
+
+        jLabel2.setText("ID");
+        jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 30, -1, -1));
+
+        btn_delete.setIcon(new javax.swing.ImageIcon("C:\\Users\\jumaj\\Desktop\\close.png")); // NOI18N
         btn_delete.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_deleteActionPerformed(evt);
             }
         });
-        jPanel2.add(btn_delete, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 240, -1, -1));
+        jPanel2.add(btn_delete, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 240, -1, -1));
 
-        jLabel1.setText("Nome");
-        jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 40, -1, -1));
-
-        jLabel7.setText("Contato");
-        jPanel2.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 90, -1, -1));
-
-        jLabel8.setText("E-mail");
-        jPanel2.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 140, -1, -1));
-        jPanel2.add(txt_nome, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 60, 190, -1));
-        jPanel2.add(txt_contato, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 110, 190, -1));
-        jPanel2.add(txt_email, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 160, 190, -1));
+        btn_update.setIcon(new javax.swing.ImageIcon("C:\\Users\\jumaj\\Desktop\\update.png")); // NOI18N
+        btn_update.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_updateActionPerformed(evt);
+            }
+        });
+        jPanel2.add(btn_update, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 240, -1, -1));
 
         jTabbedPane1.addTab("Manutenção de Clientes", jPanel2);
 
@@ -155,28 +199,29 @@ public class JF_Cliente extends javax.swing.JFrame {
     }//GEN-LAST:event_formWindowOpened
 
     private void btn_okActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_okActionPerformed
-        cli.setCli_nome(txt_nome.getText());
-        cli.setCli_senha(txt_senha.getText());
-        cli.setCli_contato(txt_contato.getText());
-        cli.setCli_email(txt_email.getText());        
+
+    if (funccli.verificarCampos(txt_nome, txt_email, txt_senha, txt_redsenha, this) == true) {
         
-        if(!txt_senha.getText().equals(txt_redsenha.getText())){
-            JOptionPane.showMessageDialog(this, "Senhas não conferem");
-            txt_senha.setText(null);
-            txt_redsenha.setText(null);
-            txt_senha.requestFocus();
-  
-        }else if(txt_senha.getText().length() < 6){
-            JOptionPane.showMessageDialog(this, "Senhas com menos de 6 dígitos não são permitidas!");
-        }
-        else{             
-            cliDAO.inserirCliente(cli, this);
-            txt_nome.setText(null);
-            txt_contato.setText(null);
-            txt_email.setText(null);
-            txt_senha.setText(null);
-            txt_redsenha.setText(null);
-            txt_nome.requestFocus();
+        cli.setCli_nome(txt_nome.getText());
+        cli.setCli_email(txt_email.getText());   
+        cli.setCli_senha(txt_senha.getText());      
+        
+        if (txt_senha.getText().equals(txt_redsenha.getText())) {
+
+                if (flag == 0) {
+                    cliDAO.inserirCliente(cli, this);
+                    funccli.acaoOkCancelar(btn_ok, btn_cancel, btn_delete, btn_update);
+                } else {
+                    cliDAO.alterarCli(cli, this);
+                    funccli.acaoEdicao(btn_ok, btn_cancel, btn_delete, btn_update);
+                }
+
+            } else {
+                JOptionPane.showMessageDialog(this, "Senhas não conferem");
+                txt_senha.setText(null);
+                txt_redsenha.setText(null);
+                txt_senha.requestFocus();
+            }
         }
     }//GEN-LAST:event_btn_okActionPerformed
 
@@ -184,15 +229,39 @@ public class JF_Cliente extends javax.swing.JFrame {
         cliDAO.consultarTodos(tabCliente, this);
     }//GEN-LAST:event_jTabbedPane1StateChanged
 
-    private void btn_deleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_deleteActionPerformed
+    private void btn_cancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_cancelActionPerformed
+        txt_id.setText(null);
         txt_nome.setText(null);
         txt_contato.setText(null);
         txt_email.setText(null);
         txt_senha.setText(null);
         txt_redsenha.setText(null);
         txt_nome.requestFocus();
+    }//GEN-LAST:event_btn_cancelActionPerformed
+
+    private void txt_idActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_idActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txt_idActionPerformed
+
+    private void btn_deleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_deleteActionPerformed
+        cli.setCli_id(Integer.valueOf(txt_id.getText()));
+        cliDAO.removerCli(cli, this);
+        funccli.limparCampos(txt_id, txt_nome, txt_contato, txt_email, txt_senha, txt_redsenha);
     }//GEN-LAST:event_btn_deleteActionPerformed
 
+    private void tabClienteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabClienteMouseClicked
+        funccli.enviarDados(tabCliente, txt_id, txt_nome, txt_contato, txt_email, jTabbedPane1);
+        funccli.acaoIrEdicao(btn_ok, btn_cancel, btn_delete, btn_update);
+        funccli.desabilitarCampos(txt_id, txt_nome, txt_contato, txt_email, txt_senha, txt_redsenha);
+    }//GEN-LAST:event_tabClienteMouseClicked
+
+    private void btn_updateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_updateActionPerformed
+        flag = 1;
+        funccli.acaoEdicao(btn_ok, btn_cancel, btn_delete, btn_update);
+        funccli.habilitarCampos(txt_id, txt_nome, txt_contato, txt_email, txt_senha, txt_redsenha);
+    }//GEN-LAST:event_btn_updateActionPerformed
+
+    
     /**
      * @param args the command line arguments
      */
@@ -230,9 +299,12 @@ public class JF_Cliente extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btn_cancel;
     private javax.swing.JButton btn_delete;
     private javax.swing.JButton btn_ok;
+    private javax.swing.JButton btn_update;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel7;
@@ -244,6 +316,7 @@ public class JF_Cliente extends javax.swing.JFrame {
     private javax.swing.JTable tabCliente;
     private javax.swing.JTextField txt_contato;
     private javax.swing.JTextField txt_email;
+    private javax.swing.JTextField txt_id;
     private javax.swing.JTextField txt_nome;
     private javax.swing.JPasswordField txt_redsenha;
     private javax.swing.JPasswordField txt_senha;
