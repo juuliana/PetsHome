@@ -155,10 +155,17 @@ public class JF_Cliente extends javax.swing.JFrame {
     }//GEN-LAST:event_formWindowOpened
 
     private void btn_okActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_okActionPerformed
+        String[] array = {null, null,null,null,null, null};
+        
         cli.setCli_nome(txt_nome.getText());
         cli.setCli_senha(txt_senha.getText());
         cli.setCli_contato(txt_contato.getText());
-        cli.setCli_email(txt_email.getText());        
+        cli.setCli_email(txt_email.getText()); 
+        
+        array[0] = txt_nome.getText();
+        array[0] = txt_nome.getText();
+        array[0] = txt_nome.getText();
+        array[0] = txt_nome.getText();
         
         if(!txt_senha.getText().equals(txt_redsenha.getText())){
             JOptionPane.showMessageDialog(this, "Senhas não conferem");
