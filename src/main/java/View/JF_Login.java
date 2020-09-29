@@ -63,6 +63,7 @@ public class JF_Login extends javax.swing.JFrame {
         jLabel3.setText("Senha");
 
         jButton1.setText("Acessar");
+        jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
