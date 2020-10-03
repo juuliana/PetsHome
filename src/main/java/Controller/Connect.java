@@ -8,7 +8,7 @@ public class Connect {
         String driver = "com.mysql.jdbc.Driver";
         String host = "jdbc:mysql://localhost:3306/petshome";
         String user = "root";
-        String pass = "Ch@ap0l!n6@@a";
+        String pass = "";
         
         try{
             Class.forName(driver);
