@@ -53,14 +53,13 @@ public class FuncCliente {
     }
    
 //Enviar dados da JTable para tab de manutenção de usuários
-    public void enviarDados(JTable tabCliente, JTextField txt_id, JTextField txt_nome, JTextField txt_contato, JTextField txt_email, JTabbedPane pagina){
-        
+    public void enviarDados(JTable tabCliente, JTextField id, JTextField nome, JTextField contato, JTextField email, JTabbedPane pagina){  
         int linha = tabCliente.getSelectedRow();
         
-        txt_id.setText(tabCliente.getModel().getValueAt(linha, 0).toString());
-        txt_nome.setText(tabCliente.getModel().getValueAt(linha, 1).toString());
-        txt_contato.setText(tabCliente.getModel().getValueAt(linha, 1).toString());
-        txt_email.setText(tabCliente.getModel().getValueAt(linha, 1).toString());
+        id.setText(tabCliente.getModel().getValueAt(linha, 0).toString());
+        nome.setText(tabCliente.getModel().getValueAt(linha, 1).toString());
+        contato.setText(tabCliente.getModel().getValueAt(linha, 2).toString());
+        email.setText(tabCliente.getModel().getValueAt(linha, 3).toString());
         
         pagina.setSelectedIndex(1);   
     }
@@ -90,29 +89,24 @@ public class FuncCliente {
     }
 
 //Botões - Ação de Inserção
-    public void acaoCUD(JButton inserir, JButton editar, JButton deletar, JButton ok, JButton cancelar, JTextField usuario) {
+    public void acaoCUD(JButton inserir, JButton cancelar, JButton deletar, JButton editar) {
 
-        inserir.setEnabled(false);
-        editar.setEnabled(false);
+        inserir.setEnabled(true);
         deletar.setEnabled(false);
-        ok.setEnabled(true);
         cancelar.setEnabled(true);
-        usuario.requestFocus();
-
+        editar.setEnabled(false);
     }
 
 //Botões - Ação de Ir para tela de Edição
     public void acaoIrEdicao(JButton inserir, JButton cancelar, JButton deletar, JButton editar) {
-
         inserir.setEnabled(false);
         cancelar.setEnabled(false);
-        deletar.setEnabled(false);
+        deletar.setEnabled(true);
         editar.setEnabled(true);
     }
 
 //Botões - Ação de Edição
     public void acaoEdicao(JButton inserir, JButton cancelar, JButton deletar, JButton editar) {
-
         inserir.setEnabled(true);
         cancelar.setEnabled(true);
         deletar.setEnabled(true);
@@ -120,8 +114,7 @@ public class FuncCliente {
     }
 
 //Botões - Ação de OK e Cancelar
-    public void acaoOkCancelar(JButton inserir, JButton editar, JButton deletar, JButton cancelar) {
-        
+    public void acaoOkCancelar(JButton inserir, JButton cancelar, JButton deletar, JButton editar) {
         inserir.setEnabled(true);
         cancelar.setEnabled(true);
         deletar.setEnabled(false);
