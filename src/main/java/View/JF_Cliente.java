@@ -26,6 +26,7 @@ public class JF_Cliente extends javax.swing.JFrame {
         initComponents();
         
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+        funccli.acaoCUD(btn_ok, btn_cancel, btn_delete, btn_update);
     }
 
     /**
@@ -79,17 +80,17 @@ public class JF_Cliente extends javax.swing.JFrame {
 
         tabCliente.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null}
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
             },
             new String [] {
-                "ID", "Nome do Cliente", "Contato"
+                "ID", "Nome do Cliente", "Contato", "E-maill"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false
+                false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -125,7 +126,7 @@ public class JF_Cliente extends javax.swing.JFrame {
         jPanel2.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 150, -1, -1));
         jPanel2.add(txt_redsenha, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 170, 190, -1));
 
-        btn_ok.setIcon(new javax.swing.ImageIcon("C:\\Users\\jumaj\\Desktop\\correct.png")); // NOI18N
+        btn_ok.setIcon(new javax.swing.ImageIcon("C:\\Users\\jumaj\\Desktop\\EDUVALE\\4°Termo\\Desenvolvimento de Software II\\Projeto Java\\correct.png")); // NOI18N
         btn_ok.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btn_ok.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -134,7 +135,7 @@ public class JF_Cliente extends javax.swing.JFrame {
         });
         jPanel2.add(btn_ok, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 240, -1, -1));
 
-        btn_cancel.setIcon(new javax.swing.ImageIcon("C:\\Users\\jumaj\\Desktop\\quit.png")); // NOI18N
+        btn_cancel.setIcon(new javax.swing.ImageIcon("C:\\Users\\jumaj\\Desktop\\EDUVALE\\4°Termo\\Desenvolvimento de Software II\\Projeto Java\\quit.png")); // NOI18N
         btn_cancel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btn_cancel.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -166,7 +167,7 @@ public class JF_Cliente extends javax.swing.JFrame {
         jLabel2.setText("ID");
         jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 30, -1, -1));
 
-        btn_delete.setIcon(new javax.swing.ImageIcon("C:\\Users\\jumaj\\Desktop\\close.png")); // NOI18N
+        btn_delete.setIcon(new javax.swing.ImageIcon("C:\\Users\\jumaj\\Desktop\\EDUVALE\\4°Termo\\Desenvolvimento de Software II\\Projeto Java\\close.png")); // NOI18N
         btn_delete.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_deleteActionPerformed(evt);
@@ -174,7 +175,7 @@ public class JF_Cliente extends javax.swing.JFrame {
         });
         jPanel2.add(btn_delete, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 240, -1, -1));
 
-        btn_update.setIcon(new javax.swing.ImageIcon("C:\\Users\\jumaj\\Desktop\\update.png")); // NOI18N
+        btn_update.setIcon(new javax.swing.ImageIcon("C:\\Users\\jumaj\\Desktop\\EDUVALE\\4°Termo\\Desenvolvimento de Software II\\Projeto Java\\update.png")); // NOI18N
         btn_update.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_updateActionPerformed(evt);
@@ -199,35 +200,24 @@ public class JF_Cliente extends javax.swing.JFrame {
     }//GEN-LAST:event_formWindowOpened
 
     private void btn_okActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_okActionPerformed
-<<<<<<< HEAD
-        String[] array = {null, null,null,null,null, null};
         
-        cli.setCli_nome(txt_nome.getText());
-        cli.setCli_senha(txt_senha.getText());
-        cli.setCli_contato(txt_contato.getText());
-        cli.setCli_email(txt_email.getText()); 
-        
-        array[0] = txt_nome.getText();
-        array[0] = txt_nome.getText();
-        array[0] = txt_nome.getText();
-        array[0] = txt_nome.getText();
-=======
-
     if (funccli.verificarCampos(txt_nome, txt_email, txt_senha, txt_redsenha, this) == true) {
         
         cli.setCli_nome(txt_nome.getText());
         cli.setCli_email(txt_email.getText());   
         cli.setCli_senha(txt_senha.getText());      
->>>>>>> 7200e61d40f096d47201d68eecdfbe35e12dfe36
         
         if (txt_senha.getText().equals(txt_redsenha.getText())) {
-
+            
                 if (flag == 0) {
                     cliDAO.inserirCliente(cli, this);
                     funccli.acaoOkCancelar(btn_ok, btn_cancel, btn_delete, btn_update);
+                    funccli.limparCampos(txt_id, txt_nome, txt_contato, txt_email, txt_senha, txt_redsenha);
                 } else {
                     cliDAO.alterarCli(cli, this);
-                    funccli.acaoEdicao(btn_ok, btn_cancel, btn_delete, btn_update);
+                    funccli.acaoOkCancelar(btn_ok, btn_cancel, btn_delete, btn_update);
+                    funccli.desabilitarCampos(txt_id, txt_nome, txt_contato, txt_email, txt_senha, txt_redsenha);
+                    funccli.limparCampos(txt_id, txt_nome, txt_contato, txt_email, txt_senha, txt_redsenha);
                 }
 
             } else {
