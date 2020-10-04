@@ -9,12 +9,11 @@ import javax.swing.JTabbedPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
 
-public class FuncCliente {
+public class FuncFuncionario {
 
-    public void limparCampos(JTextField id,  JTextField nome, JTextField contato, JTextField email, JPasswordField senha, JPasswordField redsenha) {
+    public void limparCampos(JTextField id,  JTextField nome, JTextField email, JPasswordField senha, JPasswordField redsenha) {
         id.setText(null);
         nome.setText(null);
-        contato.setText(null);
         email.setText(null);
         senha.setText(null);
         redsenha.setText(null);
@@ -47,34 +46,33 @@ public class FuncCliente {
         }
         
         return true;
+
     }
    
-    public void enviarDados(JTable tabCliente, JTextField id, JTextField nome, JTextField contato, JTextField email, JTabbedPane pagina){  
-        int linha = tabCliente.getSelectedRow();
+    public void enviarDados(JTable tabFuncionario, JTextField id, JTextField nome, JTextField email, JTabbedPane pagina){  
+        int linha = tabFuncionario.getSelectedRow();
         
-        id.setText(tabCliente.getModel().getValueAt(linha, 0).toString());
-        nome.setText(tabCliente.getModel().getValueAt(linha, 1).toString());
-        contato.setText(tabCliente.getModel().getValueAt(linha, 2).toString());
-        email.setText(tabCliente.getModel().getValueAt(linha, 3).toString());
+        id.setText(tabFuncionario.getModel().getValueAt(linha, 0).toString());
+        nome.setText(tabFuncionario.getModel().getValueAt(linha, 1).toString());
+        email.setText(tabFuncionario.getModel().getValueAt(linha, 2).toString());
         
         pagina.setSelectedIndex(1);   
     }
 
-    public void habilitarCampos(JTextField id, JTextField nome, JTextField contato, JTextField email, JPasswordField senha, JPasswordField redsenha) {
+    public void habilitarCampos(JTextField id, JTextField nome, JTextField email, JPasswordField senha, JPasswordField redsenha) {
 
         id.setEnabled(true);
         nome.setEnabled(true);
-        contato.setEnabled(true);
         email.setEnabled(true);
         senha.setEnabled(true);
         redsenha.setEnabled(true);
+
     }
 
-    public void desabilitarCampos(JTextField id, JTextField nome, JTextField contato, JTextField email, JPasswordField senha, JPasswordField redsenha) {
+    public void desabilitarCampos(JTextField id, JTextField nome, JTextField email, JPasswordField senha, JPasswordField redsenha) {
 
         id.setEnabled(false);
         nome.setEnabled(false);
-        contato.setEnabled(false);
         email.setEnabled(false);
         senha.setEnabled(false);
         redsenha.setEnabled(false);
