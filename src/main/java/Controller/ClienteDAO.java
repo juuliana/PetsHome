@@ -1,4 +1,5 @@
 package Controller;
+import Functions.FuncCliente;
 import Model.Cliente;
 import java.sql.*;
 import javax.swing.JFrame;
@@ -16,7 +17,7 @@ public class ClienteDAO {
     //Método de Consultar Todos os Registros
     public void consultarTodos(JTable tabCliente, JFrame jfcliente){
         
-        String sql = "select id as ID, nome as Nome, contato as Contato from Cliente";
+        String sql = "select id as ID, nome as Nome, contato as Contato, email as Email from cliente";
         
         try {
             conexao = Connect.conectar();
@@ -46,15 +47,13 @@ public class ClienteDAO {
             pst.setString(4, cliente.getCli_email());
             pst.setString(5, cliente.getCli_senha());
             
-            if ((cliente.getCli_nome().isEmpty())||(cliente.getCli_email().isEmpty())||(cliente.getCli_senha().isEmpty())) {//IsEmpty = Vazio
+            if ((cliente.getCli_nome().isEmpty())||(cliente.getCli_email().isEmpty())||(cliente.getCli_senha().isEmpty())) {
                 JOptionPane.showMessageDialog(null, "Preencha todos os campos obrigatórios!");
             } else {
-                //A estrutura abaixo e usada para confirmar os dados inseridos na tabela
-                int adicionado = pst.executeUpdate();//Atualiza a tab 
-                    //System.out.println(adicionado);//Apareceera 1 se der certo no teste abaixo a condicao 1 é maior que 0 entao ele aparece cadastrado
+                int adicionado = pst.executeUpdate();
+                
                 if(adicionado > 0){
                     JOptionPane.showMessageDialog(null, "Cliente cadastrado com sucesso!");
-                    //As linhas abaixo, limpam os campos
                 } 
             }   
         } catch (Exception e) {
@@ -97,15 +96,16 @@ public class ClienteDAO {
 
             pst.setInt(1, cliente.getCli_id());
 
-            if(JOptionPane.showConfirmDialog(jfcliente, "Deseja excluir o registro?", "Atenção", JOptionPane.YES_NO_CANCEL_OPTION)==0){
+            if(JOptionPane.showConfirmDialog(jfcliente, "Deseja realmente excluir o cliente?", "Atenção", JOptionPane.YES_NO_CANCEL_OPTION)==0){
                 pst.execute();
-                JOptionPane.showMessageDialog(jfcliente, "Registro excluído com sucesso!");
+                JOptionPane.showMessageDialog(jfcliente, "Cliente excluído com sucesso!");
+            }else{
+                JOptionPane.showMessageDialog(jfcliente, "O cliente não foi excluído!");
             }
 
         } catch (Exception e) {
 
-            JOptionPane.showMessageDialog(jfcliente, "Erro ao excluir registro: "+e);
+            JOptionPane.showMessageDialog(jfcliente, "Erro ao excluir o cliente: "+e);
         }
     }
-
 }
