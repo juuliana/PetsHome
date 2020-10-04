@@ -1,5 +1,9 @@
 package View;
 
+import Controller.PetDAO;
+import Functions.FuncPet;
+import Model.Pet;
+
 public class JF_Pet extends javax.swing.JFrame {
 
     Pet pet = new Pet();
@@ -49,6 +53,17 @@ public class JF_Pet extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(510, 430));
         setPreferredSize(new java.awt.Dimension(510, 430));
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowOpened(java.awt.event.WindowEvent evt) {
+                formWindowOpened(evt);
+            }
+        });
+
+        jTabbedPane1.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                jTabbedPane1StateChanged(evt);
+            }
+        });
 
         jPanel1.setLayout(new java.awt.BorderLayout());
 
@@ -224,7 +239,7 @@ public class JF_Pet extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btn_deleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_deleteActionPerformed
-        pet.setPet_id(Integer.valueOf(txt_id.getText()));
+        pet.setId(Integer.valueOf(txt_id.getText()));
         petDAO.removerPet(pet, this);
         funcpet.limparCampos(txt_id, txt_nome, txt_raca, box_porte, txt_idade, box_dono);
         funcpet.acaoCUD(btn_ok, btn_cancel, btn_delete, btn_update);
@@ -248,6 +263,15 @@ public class JF_Pet extends javax.swing.JFrame {
     private void btn_updateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_updateActionPerformed
         // LUANNN
     }//GEN-LAST:event_btn_updateActionPerformed
+
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+        petDAO.consultarTodos(tabPet, this);
+    }//GEN-LAST:event_formWindowOpened
+
+    private void jTabbedPane1StateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jTabbedPane1StateChanged
+        petDAO.consultarTodos(tabPet, this);
+        funcpet.acaoOkCancelar(btn_ok, btn_cancel, btn_delete, btn_update);
+    }//GEN-LAST:event_jTabbedPane1StateChanged
 
     /**
      * @param args the command line arguments
