@@ -108,4 +108,8 @@ public class Cliente {
     private String cli_email;
     private String cli_senha;
     private int cli_end;
+
+    public int getFunc_id() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }
