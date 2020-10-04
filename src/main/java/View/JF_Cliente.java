@@ -34,10 +34,6 @@ public class JF_Cliente extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         tabCliente = new javax.swing.JTable();
         jPanel2 = new javax.swing.JPanel();
-        txt_senha = new javax.swing.JPasswordField();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        txt_redsenha = new javax.swing.JPasswordField();
         btn_ok = new javax.swing.JButton();
         btn_cancel = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
@@ -103,21 +99,6 @@ public class JF_Cliente extends javax.swing.JFrame {
         jPanel2.setPreferredSize(new java.awt.Dimension(505, 150));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        txt_senha.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txt_senhaActionPerformed(evt);
-            }
-        });
-        jPanel2.add(txt_senha, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 110, 190, -1));
-
-        jLabel4.setText("* Senha");
-        jPanel2.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 90, -1, -1));
-
-        jLabel5.setText("* Redigite a senha");
-        jPanel2.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 150, -1, -1));
-        jPanel2.add(txt_redsenha, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 170, 190, -1));
-
-        btn_ok.setIcon(new javax.swing.ImageIcon("C:\\Users\\jumaj\\Desktop\\EDUVALE\\4°Termo\\Desenvolvimento de Software II\\Projeto Java\\correct.png")); // NOI18N
         btn_ok.setToolTipText("Adicionar");
         btn_ok.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btn_ok.addActionListener(new java.awt.event.ActionListener() {
@@ -127,7 +108,6 @@ public class JF_Cliente extends javax.swing.JFrame {
         });
         jPanel2.add(btn_ok, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 270, -1, -1));
 
-        btn_cancel.setIcon(new javax.swing.ImageIcon("C:\\Users\\jumaj\\Desktop\\EDUVALE\\4°Termo\\Desenvolvimento de Software II\\Projeto Java\\quit.png")); // NOI18N
         btn_cancel.setToolTipText("Limpar Campos");
         btn_cancel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btn_cancel.addActionListener(new java.awt.event.ActionListener() {
@@ -138,16 +118,16 @@ public class JF_Cliente extends javax.swing.JFrame {
         jPanel2.add(btn_cancel, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 270, -1, -1));
 
         jLabel1.setText("* Nome");
-        jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 90, -1, -1));
+        jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 30, -1, -1));
 
-        jLabel7.setText("Contato");
-        jPanel2.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 150, -1, -1));
+        jLabel7.setText("* Contato");
+        jPanel2.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 100, -1, -1));
 
-        jLabel8.setText("* E-mail");
-        jPanel2.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 30, -1, -1));
-        jPanel2.add(txt_nome, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 110, 200, -1));
-        jPanel2.add(txt_contato, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 170, 200, -1));
-        jPanel2.add(txt_email, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 50, 190, -1));
+        jLabel8.setText("E-mail");
+        jPanel2.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 100, -1, -1));
+        jPanel2.add(txt_nome, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 50, 200, -1));
+        jPanel2.add(txt_contato, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 120, 200, -1));
+        jPanel2.add(txt_email, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 120, 190, -1));
 
         txt_id.setEditable(false);
         txt_id.addActionListener(new java.awt.event.ActionListener() {
@@ -160,7 +140,6 @@ public class JF_Cliente extends javax.swing.JFrame {
         jLabel2.setText("ID");
         jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 30, -1, -1));
 
-        btn_delete.setIcon(new javax.swing.ImageIcon("C:\\Users\\jumaj\\Desktop\\EDUVALE\\4°Termo\\Desenvolvimento de Software II\\Projeto Java\\close.png")); // NOI18N
         btn_delete.setToolTipText("Deletar Cliente");
         btn_delete.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -169,7 +148,6 @@ public class JF_Cliente extends javax.swing.JFrame {
         });
         jPanel2.add(btn_delete, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 270, -1, -1));
 
-        btn_update.setIcon(new javax.swing.ImageIcon("C:\\Users\\jumaj\\Desktop\\EDUVALE\\4°Termo\\Desenvolvimento de Software II\\Projeto Java\\update.png")); // NOI18N
         btn_update.setToolTipText("Fazer Alterações");
         btn_update.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -186,42 +164,20 @@ public class JF_Cliente extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void txt_senhaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_senhaActionPerformed
-        // DELETAR
-    }//GEN-LAST:event_txt_senhaActionPerformed
-
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         cliDAO.consultarTodos(tabCliente, this);
     }//GEN-LAST:event_formWindowOpened
 
     private void btn_okActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_okActionPerformed
         
-    if (funccli.verificarCampos(txt_nome, txt_email, txt_senha, txt_redsenha, this) == true) {
+    if (funccli.verificarCampos(txt_nome, txt_contato, this) == true) {
         
         cli.setCli_nome(txt_nome.getText());
-        cli.setCli_email(txt_email.getText());   
-        cli.setCli_senha(txt_senha.getText());      
+        cli.setCli_email(txt_email.getText());        
+        cli.setCli_contato(txt_contato.getText());   
         
-        if (txt_senha.getText().equals(txt_redsenha.getText())) {
-            
-                if (flag == 0) {
-                    cliDAO.inserirCliente(cli, this);
-                    funccli.acaoOkCancelar(btn_ok, btn_cancel, btn_delete, btn_update);
-                    funccli.limparCampos(txt_id, txt_nome, txt_contato, txt_email, txt_senha, txt_redsenha);
-                } else {
-                    cliDAO.alterarCli(cli, this);
-                    funccli.acaoOkCancelar(btn_ok, btn_cancel, btn_delete, btn_update);
-                    funccli.desabilitarCampos(txt_id, txt_nome, txt_contato, txt_email, txt_senha, txt_redsenha);
-                    funccli.limparCampos(txt_id, txt_nome, txt_contato, txt_email, txt_senha, txt_redsenha);
-                }
-
-            } else {
-                JOptionPane.showMessageDialog(this, "Senhas não conferem");
-                txt_senha.setText(null);
-                txt_redsenha.setText(null);
-                txt_senha.requestFocus();
-            }
-        }
+        cliDAO.inserirCliente(cli, this);
+       }
     }//GEN-LAST:event_btn_okActionPerformed
 
     private void jTabbedPane1StateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jTabbedPane1StateChanged
@@ -230,7 +186,7 @@ public class JF_Cliente extends javax.swing.JFrame {
     }//GEN-LAST:event_jTabbedPane1StateChanged
 
     private void btn_cancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_cancelActionPerformed
-        funccli.limparCampos(txt_id, txt_nome, txt_contato, txt_email, txt_senha, txt_redsenha);
+        funccli.limparCampos(txt_id, txt_nome, txt_contato, txt_email);
     }//GEN-LAST:event_btn_cancelActionPerformed
 
     private void txt_idActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_idActionPerformed
@@ -240,21 +196,21 @@ public class JF_Cliente extends javax.swing.JFrame {
     private void btn_deleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_deleteActionPerformed
         cli.setCli_id(Integer.valueOf(txt_id.getText()));
         cliDAO.removerCli(cli, this);
-        funccli.limparCampos(txt_id, txt_nome, txt_contato, txt_email, txt_senha, txt_redsenha);
+        funccli.limparCampos(txt_id, txt_nome, txt_contato, txt_email);
         funccli.acaoCUD(btn_ok, btn_cancel, btn_delete, btn_update);
-        funccli.habilitarCampos(txt_id, txt_nome, txt_contato, txt_email, txt_senha, txt_redsenha);
+        funccli.habilitarCampos(txt_id, txt_nome, txt_contato, txt_email);
     }//GEN-LAST:event_btn_deleteActionPerformed
 
     private void tabClienteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabClienteMouseClicked
         funccli.enviarDados(tabCliente, txt_id, txt_nome, txt_contato, txt_email, jTabbedPane1);
         funccli.acaoIrEdicao(btn_ok, btn_cancel, btn_delete, btn_update);
-        funccli.desabilitarCampos(txt_id, txt_nome, txt_contato, txt_email, txt_senha, txt_redsenha);
+        funccli.desabilitarCampos(txt_id, txt_nome, txt_contato, txt_email);
     }//GEN-LAST:event_tabClienteMouseClicked
 
     private void btn_updateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_updateActionPerformed
         flag = 1;
         funccli.acaoEdicao(btn_ok, btn_cancel, btn_delete, btn_update);
-        funccli.habilitarCampos(txt_id, txt_nome, txt_contato, txt_email, txt_senha, txt_redsenha);
+        funccli.habilitarCampos(txt_id, txt_nome, txt_contato, txt_email);
     }//GEN-LAST:event_btn_updateActionPerformed
 
     
@@ -298,8 +254,6 @@ public class JF_Cliente extends javax.swing.JFrame {
     private javax.swing.JButton btn_update;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
@@ -311,7 +265,5 @@ public class JF_Cliente extends javax.swing.JFrame {
     private javax.swing.JTextField txt_email;
     private javax.swing.JTextField txt_id;
     private javax.swing.JTextField txt_nome;
-    private javax.swing.JPasswordField txt_redsenha;
-    private javax.swing.JPasswordField txt_senha;
     // End of variables declaration//GEN-END:variables
 }

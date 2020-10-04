@@ -14,8 +14,8 @@ public class LoginDAO {
     PreparedStatement ps = null;
     ResultSet rs = null;
 
-    public void login(Funcionario funcionario, String typeUser, JFrame jfLogin, JFrame jfMain){
-        String sql = "select * from " +  typeUser + " where email = ? and senha = md5(?)";
+    public void login(Funcionario funcionario, JFrame jfLogin, JFrame jfMain){
+        String sql = "select * from funcionario where email = ? and senha = md5(?)";
         
         try{
             conn = Connect.conectar();

@@ -6,9 +6,9 @@ public class Connect {
         java.sql.Connection conn = null;
         
         String driver = "com.mysql.jdbc.Driver";
-        String host = "jdbc:mysql://localhost:3306/petshome";
+        String host = "jdbc:mysql://localhost:3306/petshome2";
         String user = "root";
-        String pass = "";
+        String pass = "Ch@ap0l!n6@@a";
         
         try{
             Class.forName(driver);
