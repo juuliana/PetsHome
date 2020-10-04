@@ -170,20 +170,20 @@ public class JF_Cliente extends javax.swing.JFrame {
 
     private void btn_okActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_okActionPerformed
         
-    if (funccli.verificarCampos(txt_nome, txt_contato, this) == true) {
+        if (funccli.verificarCampos(txt_nome, txt_contato, this) == true) {
         
-        cli.setCli_nome(txt_nome.getText());
-        cli.setCli_email(txt_email.getText());        
-        cli.setCli_contato(txt_contato.getText()); 
-        cli.setCli_id(Integer.parseInt(txt_id.getText()));
-                
-        if(cli.getIsUpdating()){
-            cliDAO.alterarCli(cli, this);
-            
-            cli.setIsUpdating(false);
-        }else{
-            cliDAO.inserirCliente(cli, this);
-        }
+            cli.setCli_nome(txt_nome.getText());
+            cli.setCli_email(txt_email.getText());        
+            cli.setCli_contato(txt_contato.getText()); 
+            cli.setCli_id(Integer.parseInt(txt_id.getText()));
+
+            if(cli.getIsUpdating()){
+                cliDAO.alterarCli(cli, this);
+
+                cli.setIsUpdating(false);
+            }else{
+                cliDAO.inserirCliente(cli, this);
+            }
        }
     }//GEN-LAST:event_btn_okActionPerformed
 

@@ -1,21 +1,18 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package View;
 
-/**
- *
- * @author jumaj
- */
 public class JF_Pet extends javax.swing.JFrame {
 
-    /**
-     * Creates new form JF_Pet
-     */
+    Pet pet = new Pet();
+    PetDAO petDAO = new PetDAO();
+    FuncPet funcpet = new FuncPet();
+    
+    int flag;
+    
     public JF_Pet() {
         initComponents();
+        
+        setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+        funcpet.acaoCUD(btn_ok, btn_cancel, btn_delete, btn_update);
     }
 
     /**
@@ -30,7 +27,7 @@ public class JF_Pet extends javax.swing.JFrame {
         jTabbedPane1 = new javax.swing.JTabbedPane();
         jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tabPet = new javax.swing.JTable();
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         txt_id = new javax.swing.JTextField();
@@ -53,7 +50,9 @@ public class JF_Pet extends javax.swing.JFrame {
         setMinimumSize(new java.awt.Dimension(510, 430));
         setPreferredSize(new java.awt.Dimension(510, 430));
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        jPanel1.setLayout(new java.awt.BorderLayout());
+
+        tabPet.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null},
                 {null, null, null, null, null, null},
@@ -72,18 +71,14 @@ public class JF_Pet extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane1.setViewportView(jTable1);
+        tabPet.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tabPetMouseClicked(evt);
+            }
+        });
+        jScrollPane1.setViewportView(tabPet);
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 524, Short.MAX_VALUE)
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 361, Short.MAX_VALUE)
-        );
+        jPanel1.add(jScrollPane1, java.awt.BorderLayout.CENTER);
 
         jTabbedPane1.addTab("Consulta Pet", jPanel1);
 
@@ -109,9 +104,19 @@ public class JF_Pet extends javax.swing.JFrame {
 
         btn_ok.setIcon(new javax.swing.ImageIcon("C:\\Users\\jumaj\\Desktop\\EDUVALE\\4°Termo\\Desenvolvimento de Software II\\Projeto Java\\correct.png")); // NOI18N
         btn_ok.setToolTipText("Adicionar");
+        btn_ok.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_okActionPerformed(evt);
+            }
+        });
 
         btn_cancel.setIcon(new javax.swing.ImageIcon("C:\\Users\\jumaj\\Desktop\\EDUVALE\\4°Termo\\Desenvolvimento de Software II\\Projeto Java\\quit.png")); // NOI18N
         btn_cancel.setToolTipText("Limpar Campos");
+        btn_cancel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_cancelActionPerformed(evt);
+            }
+        });
 
         btn_delete.setIcon(new javax.swing.ImageIcon("C:\\Users\\jumaj\\Desktop\\EDUVALE\\4°Termo\\Desenvolvimento de Software II\\Projeto Java\\close.png")); // NOI18N
         btn_delete.setToolTipText("Deletar Pet");
@@ -123,6 +128,11 @@ public class JF_Pet extends javax.swing.JFrame {
 
         btn_update.setIcon(new javax.swing.ImageIcon("C:\\Users\\jumaj\\Desktop\\EDUVALE\\4°Termo\\Desenvolvimento de Software II\\Projeto Java\\update.png")); // NOI18N
         btn_update.setToolTipText("Fazer Alterações");
+        btn_update.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_updateActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -189,11 +199,11 @@ public class JF_Pet extends javax.swing.JFrame {
                     .addComponent(txt_raca, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(box_dono, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(68, 68, 68)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btn_ok)
-                    .addComponent(btn_cancel)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btn_cancel, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(btn_delete)
-                    .addComponent(btn_update))
+                    .addComponent(btn_update, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(btn_ok))
                 .addContainerGap(21, Short.MAX_VALUE))
         );
 
@@ -214,8 +224,30 @@ public class JF_Pet extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btn_deleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_deleteActionPerformed
-        // TODO add your handling code here:
+        pet.setPet_id(Integer.valueOf(txt_id.getText()));
+        petDAO.removerPet(pet, this);
+        funcpet.limparCampos(txt_id, txt_nome, txt_raca, box_porte, txt_idade, box_dono);
+        funcpet.acaoCUD(btn_ok, btn_cancel, btn_delete, btn_update);
+        funcpet.habilitarCampos(txt_id, txt_nome, txt_raca, box_porte, txt_idade, box_dono);
     }//GEN-LAST:event_btn_deleteActionPerformed
+
+    private void btn_okActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_okActionPerformed
+        //LUANNN HAHA
+    }//GEN-LAST:event_btn_okActionPerformed
+
+    private void btn_cancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_cancelActionPerformed
+        funcpet.limparCampos(txt_id, txt_nome, txt_raca, box_porte, txt_idade, box_dono);
+    }//GEN-LAST:event_btn_cancelActionPerformed
+
+    private void tabPetMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabPetMouseClicked
+        funcpet.enviarDados(tabPet, txt_id, txt_nome, txt_raca, box_porte, txt_idade, box_dono,  jTabbedPane1);
+        funcpet.acaoIrEdicao(btn_ok, btn_cancel, btn_delete, btn_update);
+        funcpet.desabilitarCampos(txt_id, txt_nome, txt_raca, box_porte, txt_idade, box_dono);
+    }//GEN-LAST:event_tabPetMouseClicked
+
+    private void btn_updateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_updateActionPerformed
+        // LUANNN
+    }//GEN-LAST:event_btn_updateActionPerformed
 
     /**
      * @param args the command line arguments
@@ -269,7 +301,7 @@ public class JF_Pet extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTabbedPane jTabbedPane1;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JTable tabPet;
     private javax.swing.JTextField txt_id;
     private javax.swing.JTextField txt_idade;
     private javax.swing.JTextField txt_nome;
