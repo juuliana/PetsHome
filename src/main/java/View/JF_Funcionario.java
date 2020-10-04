@@ -1,22 +1,24 @@
 package View;
 
 import Controller.FuncionarioDAO;
+import Functions.FuncCliente;
+import Functions.FuncFuncionario;
 import Model.Funcionario;
 import javax.swing.JOptionPane;
 
-/**
- *
- * @author jumaj
- */
 public class JF_Funcionario extends javax.swing.JFrame {
 
     Funcionario func = new Funcionario();
     FuncionarioDAO funcDAO = new FuncionarioDAO();
+    FuncFuncionario funcfunc = new FuncFuncionario();
+    
+    int flag;
     
     public JF_Funcionario() {
         initComponents();
         
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+        funcfunc.acaoCUD(btn_ok, btn_cancel, btn_delete, btn_update);
     }
 
     /**
@@ -36,13 +38,17 @@ public class JF_Funcionario extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         txt_nome = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
-        txt_usuario = new javax.swing.JTextField();
+        txt_email = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
         txt_senha = new javax.swing.JPasswordField();
         jLabel5 = new javax.swing.JLabel();
         txt_redsenha = new javax.swing.JPasswordField();
         btn_ok = new javax.swing.JButton();
+        btn_cancel = new javax.swing.JButton();
         btn_delete = new javax.swing.JButton();
+        btn_update = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
+        txt_id = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(467, 273));
@@ -52,6 +58,8 @@ public class JF_Funcionario extends javax.swing.JFrame {
             }
         });
 
+        jTabbedPane1.setMinimumSize(new java.awt.Dimension(500, 430));
+        jTabbedPane1.setPreferredSize(new java.awt.Dimension(500, 430));
         jTabbedPane1.addChangeListener(new javax.swing.event.ChangeListener() {
             public void stateChanged(javax.swing.event.ChangeEvent evt) {
                 jTabbedPane1StateChanged(evt);
@@ -62,21 +70,26 @@ public class JF_Funcionario extends javax.swing.JFrame {
 
         tabFuncionario.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null}
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null}
             },
             new String [] {
-                "Nome do Funcionário", "Usuário"
+                "ID", "Nome", "Email"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false
+                false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
                 return canEdit [columnIndex];
+            }
+        });
+        tabFuncionario.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tabFuncionarioMouseClicked(evt);
             }
         });
         tabFuncionario1.setViewportView(tabFuncionario);
@@ -86,17 +99,18 @@ public class JF_Funcionario extends javax.swing.JFrame {
         jTabbedPane1.addTab("Consulta Funcionário", jPanel1);
 
         jPanel2.setToolTipText("");
-        jPanel2.setPreferredSize(new java.awt.Dimension(500, 200));
+        jPanel2.setPreferredSize(new java.awt.Dimension(450, 150));
 
-        jLabel1.setText("Nome");
+        jLabel1.setText("* Nome");
 
-        jLabel3.setText("Usuário");
+        jLabel3.setText("* E-mail");
 
         jLabel4.setText("Senha");
 
         jLabel5.setText("Redigite a senha");
 
-        btn_ok.setIcon(new javax.swing.ImageIcon("C:\\Users\\jumaj\\Desktop\\correct.png")); // NOI18N
+        btn_ok.setIcon(new javax.swing.ImageIcon("C:\\Users\\jumaj\\Desktop\\EDUVALE\\4°Termo\\Desenvolvimento de Software II\\Projeto Java\\correct.png")); // NOI18N
+        btn_ok.setToolTipText("Adicionar");
         btn_ok.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btn_ok.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -104,7 +118,17 @@ public class JF_Funcionario extends javax.swing.JFrame {
             }
         });
 
-        btn_delete.setIcon(new javax.swing.ImageIcon("C:\\Users\\jumaj\\Desktop\\quit.png")); // NOI18N
+        btn_cancel.setIcon(new javax.swing.ImageIcon("C:\\Users\\jumaj\\Desktop\\EDUVALE\\4°Termo\\Desenvolvimento de Software II\\Projeto Java\\quit.png")); // NOI18N
+        btn_cancel.setToolTipText("Limpar Campos");
+        btn_cancel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btn_cancel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_cancelActionPerformed(evt);
+            }
+        });
+
+        btn_delete.setIcon(new javax.swing.ImageIcon("C:\\Users\\jumaj\\Desktop\\EDUVALE\\4°Termo\\Desenvolvimento de Software II\\Projeto Java\\close.png")); // NOI18N
+        btn_delete.setToolTipText("Deletar Funcionário");
         btn_delete.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btn_delete.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -112,22 +136,38 @@ public class JF_Funcionario extends javax.swing.JFrame {
             }
         });
 
+        btn_update.setIcon(new javax.swing.ImageIcon("C:\\Users\\jumaj\\Desktop\\EDUVALE\\4°Termo\\Desenvolvimento de Software II\\Projeto Java\\update.png")); // NOI18N
+        btn_update.setToolTipText("Fazer Alterações");
+        btn_update.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btn_update.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_updateActionPerformed(evt);
+            }
+        });
+
+        jLabel2.setText("ID");
+
+        txt_id.setEditable(false);
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addGap(24, 24, 24)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(txt_nome, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 160, Short.MAX_VALUE)
+                        .addComponent(txt_email, javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.LEADING))
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(24, 24, 24)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txt_nome, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 160, Short.MAX_VALUE)
-                            .addComponent(txt_usuario, javax.swing.GroupLayout.Alignment.LEADING)))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(108, 108, 108)
-                        .addComponent(btn_ok, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(4, 4, 4)
+                        .addComponent(btn_ok, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btn_cancel))
+                    .addComponent(txt_id, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -136,40 +176,44 @@ public class JF_Funcionario extends javax.swing.JFrame {
                             .addComponent(jLabel5)
                             .addComponent(txt_redsenha, javax.swing.GroupLayout.DEFAULT_SIZE, 147, Short.MAX_VALUE)
                             .addComponent(txt_senha))
-                        .addGap(57, 57, 57))
+                        .addGap(52, 52, 52))
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(55, 55, 55)
+                        .addGap(32, 32, 32)
                         .addComponent(btn_delete)
-                        .addContainerGap(118, Short.MAX_VALUE))))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btn_update)
+                        .addContainerGap(35, Short.MAX_VALUE))))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addGap(26, 26, 26)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addGap(7, 7, 7)
-                        .addComponent(txt_nome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(jLabel4)
-                        .addGap(7, 7, 7)
-                        .addComponent(txt_senha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(18, 18, 18)
+                .addComponent(jLabel2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txt_id, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(17, 17, 17)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1)
+                    .addComponent(jLabel4))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txt_nome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txt_senha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(jLabel3)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txt_usuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(jLabel5)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txt_redsenha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(43, 43, 43)
+                    .addComponent(jLabel5)
+                    .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.TRAILING))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(txt_redsenha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txt_email, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(47, 47, 47)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btn_cancel)
                     .addComponent(btn_ok)
-                    .addComponent(btn_delete))
-                .addContainerGap(59, Short.MAX_VALUE))
+                    .addComponent(btn_delete)
+                    .addComponent(btn_update))
+                .addContainerGap(116, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Manutenção de Funcionários", jPanel2);
@@ -181,46 +225,66 @@ public class JF_Funcionario extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btn_okActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_okActionPerformed
-        // TODO add your handling code here:
+           if (funcfunc.verificarCampos(txt_nome, txt_email, txt_senha, txt_redsenha, this) == true) {
+        
         func.setFunc_nome(txt_nome.getText());
-        func.setFunc_email(txt_usuario.getText());
-        func.setFunc_senha(txt_senha.getText());
+        func.setFunc_email(txt_email.getText());   
+        func.setFunc_senha(txt_senha.getText());      
         
-        if(!txt_redsenha.getText().equals(txt_senha.getText())){
-            JOptionPane.showMessageDialog(this, "Senhas não conferem");
-           
-            txt_senha.setText(null);
-            txt_redsenha.setText(null);
-            txt_senha.requestFocus();
+        if (txt_senha.getText().equals(txt_redsenha.getText())) {
+            
+                if (flag == 0) {
+                    funcDAO.inserirFuncionario(func, this);
+                    funcfunc.acaoOkCancelar(btn_ok, btn_cancel, btn_delete, btn_update);
+                    funcfunc.limparCampos(txt_id, txt_nome, txt_email, txt_senha, txt_redsenha);
+                } else {
+                    funcDAO.alterarFuncionario(func, this);
+                    funcfunc.acaoOkCancelar(btn_ok, btn_cancel, btn_delete, btn_update);
+                    funcfunc.desabilitarCampos(txt_id, txt_nome, txt_email, txt_senha, txt_redsenha);
+                    funcfunc.limparCampos(txt_id, txt_nome, txt_email, txt_senha, txt_redsenha);
+                }
+
+            } else {
+                JOptionPane.showMessageDialog(this, "Senhas não conferem");
+                txt_senha.setText(null);
+                txt_redsenha.setText(null);
+                txt_senha.requestFocus();
+            }
         }
-        
-        else if(txt_senha.getText().length() < 6){
-            JOptionPane.showMessageDialog(null, "Senhas com menos de 6 dígitos não são permitidas!");
-        }else{
-             funcDAO.inserirFuncionario(func, this);
-             txt_nome.setText(null);
-             txt_usuario.setText(null);
-             txt_senha.setText(null);
-             txt_redsenha.setText(null);
-             txt_nome.requestFocus();
-        }     
     }//GEN-LAST:event_btn_okActionPerformed
 
     private void jTabbedPane1StateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jTabbedPane1StateChanged
         funcDAO.consultarTodos(tabFuncionario, this);
+        funcfunc.acaoOkCancelar(btn_ok, btn_cancel, btn_delete, btn_update);
     }//GEN-LAST:event_jTabbedPane1StateChanged
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         funcDAO.consultarTodos(tabFuncionario, this);
     }//GEN-LAST:event_formWindowOpened
 
+    private void btn_cancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_cancelActionPerformed
+        funcfunc.limparCampos(txt_id, txt_nome, txt_email, txt_senha, txt_redsenha);
+    }//GEN-LAST:event_btn_cancelActionPerformed
+
     private void btn_deleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_deleteActionPerformed
-        txt_nome.setText(null);
-        txt_usuario.setText(null);
-        txt_senha.setText(null);
-        txt_redsenha.setText(null);
-        txt_nome.requestFocus();
+        func.setFunc_id(Integer.valueOf(txt_id.getText()));
+        funcDAO.removerFuncionario(func, this);
+        funcfunc.limparCampos(txt_id, txt_nome, txt_email, txt_senha, txt_redsenha);
+        funcfunc.acaoCUD(btn_ok, btn_cancel, btn_delete, btn_update);
+        funcfunc.habilitarCampos(txt_id, txt_nome, txt_email, txt_senha, txt_redsenha);
     }//GEN-LAST:event_btn_deleteActionPerformed
+
+    private void btn_updateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_updateActionPerformed
+        flag = 1;
+        funcfunc.acaoEdicao(btn_ok, btn_cancel, btn_delete, btn_update);
+        funcfunc.habilitarCampos(txt_id, txt_nome, txt_email, txt_senha, txt_redsenha);
+    }//GEN-LAST:event_btn_updateActionPerformed
+
+    private void tabFuncionarioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabFuncionarioMouseClicked
+        funcfunc.enviarDados(tabFuncionario, txt_id, txt_nome, txt_email, jTabbedPane1);
+        funcfunc.acaoIrEdicao(btn_ok, btn_cancel, btn_delete, btn_update);
+        funcfunc.desabilitarCampos(txt_id, txt_nome, txt_email, txt_senha, txt_redsenha);
+    }//GEN-LAST:event_tabFuncionarioMouseClicked
 
     /**
      * @param args the command line arguments
@@ -258,9 +322,12 @@ public class JF_Funcionario extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btn_cancel;
     private javax.swing.JButton btn_delete;
     private javax.swing.JButton btn_ok;
+    private javax.swing.JButton btn_update;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -269,9 +336,10 @@ public class JF_Funcionario extends javax.swing.JFrame {
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JTable tabFuncionario;
     private javax.swing.JScrollPane tabFuncionario1;
+    private javax.swing.JTextField txt_email;
+    private javax.swing.JTextField txt_id;
     private javax.swing.JTextField txt_nome;
     private javax.swing.JPasswordField txt_redsenha;
     private javax.swing.JPasswordField txt_senha;
-    private javax.swing.JTextField txt_usuario;
     // End of variables declaration//GEN-END:variables
 }
