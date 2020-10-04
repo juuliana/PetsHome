@@ -63,7 +63,7 @@ public class ClienteDAO {
     }
     
     public void alterarCli(Cliente cliente, JFrame jfcliente){
-        String sql = "update from cliente set nome=?, contato=?, email=? where id=?";
+        String sql = "update cliente set nome=?, contato=?, email=? where id=?";
     
         try{
             conexao = Connect.conectar();

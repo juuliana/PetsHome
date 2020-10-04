@@ -87,6 +87,20 @@ public class Cliente {
     }
 
     /**
+     * @return the isUpdating
+     */
+    public Boolean getIsUpdating() {
+        return isUpdating;
+    }
+
+    /**
+     * @param isUpdating the isUpdating to set
+     */
+    public void setIsUpdating(Boolean isUpdating) {
+        this.isUpdating = isUpdating;
+    }
+
+    /**
      * @return the cli_end
      */
     public int getCli_end() {
@@ -99,6 +113,8 @@ public class Cliente {
     public void setCli_end(int cli_end) {
         this.cli_end = cli_end;
     }
+
+    
     
     //Atributos da Classe
     private int cli_id;
@@ -107,9 +123,7 @@ public class Cliente {
     private String cli_contato;
     private String cli_email;
     private String cli_senha;
+    private Boolean isUpdating;
     private int cli_end;
 
-    public int getFunc_id() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
 }

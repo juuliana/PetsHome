@@ -174,9 +174,16 @@ public class JF_Cliente extends javax.swing.JFrame {
         
         cli.setCli_nome(txt_nome.getText());
         cli.setCli_email(txt_email.getText());        
-        cli.setCli_contato(txt_contato.getText());   
-        
-        cliDAO.inserirCliente(cli, this);
+        cli.setCli_contato(txt_contato.getText()); 
+        cli.setCli_id(Integer.parseInt(txt_id.getText()));
+                
+        if(cli.getIsUpdating()){
+            cliDAO.alterarCli(cli, this);
+            
+            cli.setIsUpdating(false);
+        }else{
+            cliDAO.inserirCliente(cli, this);
+        }
        }
     }//GEN-LAST:event_btn_okActionPerformed
 
@@ -211,6 +218,8 @@ public class JF_Cliente extends javax.swing.JFrame {
         flag = 1;
         funccli.acaoEdicao(btn_ok, btn_cancel, btn_delete, btn_update);
         funccli.habilitarCampos(txt_id, txt_nome, txt_contato, txt_email);
+        
+        cli.setIsUpdating(true);
     }//GEN-LAST:event_btn_updateActionPerformed
 
     

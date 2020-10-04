@@ -1,5 +1,6 @@
 package Functions;
 
+import Model.Cliente;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
@@ -16,6 +17,10 @@ public class FuncCliente {
         nome.setText(null);
         contato.setText(null);
         email.setText(null);
+        
+        Cliente cli = new Cliente();
+        
+        cli.setIsUpdating(false);
     }
 
     public boolean verificarCampos(JTextField txt_nome, JTextField txt_contato, JFrame jfusuario) {
