@@ -64,7 +64,7 @@ public class FuncionarioDAO {
     }
     
     public void alterarFuncionario(Funcionario funcionario, JFrame jffuncionario){
-        String sql = "update from funcionario set nome=?, email=?, senha=md5(?) where id=?";
+        String sql = "update funcionario set nome=?, email=?, senha=md5(?) where id=?";
     
         try{
             conexao = Connect.conectar();
@@ -73,6 +73,7 @@ public class FuncionarioDAO {
             pst.setString(1, funcionario.getFunc_nome());
             pst.setString(2, funcionario.getFunc_email());
             pst.setString(3, funcionario.getFunc_senha());
+            pst.setInt(4, funcionario.getFunc_id());
             
             pst.execute();
             

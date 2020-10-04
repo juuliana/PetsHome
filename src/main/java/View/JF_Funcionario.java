@@ -225,11 +225,12 @@ public class JF_Funcionario extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btn_okActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_okActionPerformed
-           if (funcfunc.verificarCampos(txt_nome, txt_email, txt_senha, txt_redsenha, this) == true) {
+        if (funcfunc.verificarCampos(txt_nome, txt_email, txt_senha, txt_redsenha, this) == true) {
         
         func.setFunc_nome(txt_nome.getText());
         func.setFunc_email(txt_email.getText());   
-        func.setFunc_senha(txt_senha.getText());      
+        func.setFunc_senha(txt_senha.getText());  
+        func.setFunc_id(Integer.parseInt(txt_id.getText()));
         
         if (txt_senha.getText().equals(txt_redsenha.getText())) {
             
@@ -264,6 +265,8 @@ public class JF_Funcionario extends javax.swing.JFrame {
 
     private void btn_cancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_cancelActionPerformed
         funcfunc.limparCampos(txt_id, txt_nome, txt_email, txt_senha, txt_redsenha);
+        
+        func.setIsUpdating(false);
     }//GEN-LAST:event_btn_cancelActionPerformed
 
     private void btn_deleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_deleteActionPerformed
@@ -278,6 +281,8 @@ public class JF_Funcionario extends javax.swing.JFrame {
         flag = 1;
         funcfunc.acaoEdicao(btn_ok, btn_cancel, btn_delete, btn_update);
         funcfunc.habilitarCampos(txt_id, txt_nome, txt_email, txt_senha, txt_redsenha);
+        
+        func.setIsUpdating(true);
     }//GEN-LAST:event_btn_updateActionPerformed
 
     private void tabFuncionarioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabFuncionarioMouseClicked

@@ -240,9 +240,6 @@
             </Component>
             <Component class="javax.swing.JButton" name="btn_ok">
               <Properties>
-                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="2" name="C:\Users\jumaj\Desktop\EDUVALE\4&#xb0;Termo\Desenvolvimento de Software II\Projeto Java\correct.png"/>
-                </Property>
                 <Property name="toolTipText" type="java.lang.String" value="Adicionar"/>
                 <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
                   <Color id="Cursor em Forma de M&#xe3;o"/>
@@ -254,9 +251,6 @@
             </Component>
             <Component class="javax.swing.JButton" name="btn_cancel">
               <Properties>
-                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="2" name="C:\Users\jumaj\Desktop\EDUVALE\4&#xb0;Termo\Desenvolvimento de Software II\Projeto Java\quit.png"/>
-                </Property>
                 <Property name="toolTipText" type="java.lang.String" value="Limpar Campos"/>
                 <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
                   <Color id="Cursor em Forma de M&#xe3;o"/>
@@ -268,9 +262,6 @@
             </Component>
             <Component class="javax.swing.JButton" name="btn_delete">
               <Properties>
-                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="2" name="C:\Users\jumaj\Desktop\EDUVALE\4&#xb0;Termo\Desenvolvimento de Software II\Projeto Java\close.png"/>
-                </Property>
                 <Property name="toolTipText" type="java.lang.String" value="Deletar Funcion&#xe1;rio"/>
                 <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
                   <Color id="Cursor em Forma de M&#xe3;o"/>
@@ -282,9 +273,6 @@
             </Component>
             <Component class="javax.swing.JButton" name="btn_update">
               <Properties>
-                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="2" name="C:\Users\jumaj\Desktop\EDUVALE\4&#xb0;Termo\Desenvolvimento de Software II\Projeto Java\update.png"/>
-                </Property>
                 <Property name="toolTipText" type="java.lang.String" value="Fazer Altera&#xe7;&#xf5;es"/>
                 <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
                   <Color id="Cursor em Forma de M&#xe3;o"/>

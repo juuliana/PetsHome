@@ -108,13 +108,28 @@ public class Funcionario {
     public void setFunc_senha(String func_senha) {
         this.func_senha = func_senha;
     }
+
+    /**
+     * @return the isUpdating
+     */
+    public Boolean getIsUpdating() {
+        return isUpdating;
+    }
+
+    /**
+     * @param isUpdating the isUpdating to set
+     */
+    public void setIsUpdating(Boolean isUpdating) {
+        this.isUpdating = isUpdating;
+    }
     
-     private int func_id;
+    private int func_id;
     private String func_nome;
     private String func_end;
     private String func_contato;
     private String func_cpf;
     private String func_email;
     private String func_senha;
+    private Boolean isUpdating;
     
 }
