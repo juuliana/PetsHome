@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package View;
 
 import Controller.ClienteDAO;
@@ -10,10 +5,6 @@ import Functions.FuncCliente;
 import Model.Cliente;
 import javax.swing.JOptionPane;
 
-/**
- *
- * @author jumaj
- */
 public class JF_Cliente extends javax.swing.JFrame {
 
     Cliente cli = new Cliente();
@@ -86,7 +77,7 @@ public class JF_Cliente extends javax.swing.JFrame {
                 {null, null, null, null}
             },
             new String [] {
-                "ID", "Nome do Cliente", "Contato", "E-maill"
+                "ID", "Nome", "Contato", "Email"
             }
         ) {
             boolean[] canEdit = new boolean [] {
@@ -127,22 +118,24 @@ public class JF_Cliente extends javax.swing.JFrame {
         jPanel2.add(txt_redsenha, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 170, 190, -1));
 
         btn_ok.setIcon(new javax.swing.ImageIcon("C:\\Users\\jumaj\\Desktop\\EDUVALE\\4°Termo\\Desenvolvimento de Software II\\Projeto Java\\correct.png")); // NOI18N
+        btn_ok.setToolTipText("Adicionar");
         btn_ok.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btn_ok.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_okActionPerformed(evt);
             }
         });
-        jPanel2.add(btn_ok, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 240, -1, -1));
+        jPanel2.add(btn_ok, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 270, -1, -1));
 
         btn_cancel.setIcon(new javax.swing.ImageIcon("C:\\Users\\jumaj\\Desktop\\EDUVALE\\4°Termo\\Desenvolvimento de Software II\\Projeto Java\\quit.png")); // NOI18N
+        btn_cancel.setToolTipText("Limpar Campos");
         btn_cancel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btn_cancel.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_cancelActionPerformed(evt);
             }
         });
-        jPanel2.add(btn_cancel, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 240, -1, -1));
+        jPanel2.add(btn_cancel, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 270, -1, -1));
 
         jLabel1.setText("* Nome");
         jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 90, -1, -1));
@@ -168,20 +161,22 @@ public class JF_Cliente extends javax.swing.JFrame {
         jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 30, -1, -1));
 
         btn_delete.setIcon(new javax.swing.ImageIcon("C:\\Users\\jumaj\\Desktop\\EDUVALE\\4°Termo\\Desenvolvimento de Software II\\Projeto Java\\close.png")); // NOI18N
+        btn_delete.setToolTipText("Deletar Cliente");
         btn_delete.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_deleteActionPerformed(evt);
             }
         });
-        jPanel2.add(btn_delete, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 240, -1, -1));
+        jPanel2.add(btn_delete, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 270, -1, -1));
 
         btn_update.setIcon(new javax.swing.ImageIcon("C:\\Users\\jumaj\\Desktop\\EDUVALE\\4°Termo\\Desenvolvimento de Software II\\Projeto Java\\update.png")); // NOI18N
+        btn_update.setToolTipText("Fazer Alterações");
         btn_update.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_updateActionPerformed(evt);
             }
         });
-        jPanel2.add(btn_update, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 240, -1, -1));
+        jPanel2.add(btn_update, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 270, -1, -1));
 
         jTabbedPane1.addTab("Manutenção de Clientes", jPanel2);
 
@@ -192,7 +187,7 @@ public class JF_Cliente extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void txt_senhaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_senhaActionPerformed
-        // TODO add your handling code here:
+        // DELETAR
     }//GEN-LAST:event_txt_senhaActionPerformed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
@@ -231,26 +226,23 @@ public class JF_Cliente extends javax.swing.JFrame {
 
     private void jTabbedPane1StateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jTabbedPane1StateChanged
         cliDAO.consultarTodos(tabCliente, this);
+        funccli.acaoOkCancelar(btn_ok, btn_cancel, btn_delete, btn_update);
     }//GEN-LAST:event_jTabbedPane1StateChanged
 
     private void btn_cancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_cancelActionPerformed
-        txt_id.setText(null);
-        txt_nome.setText(null);
-        txt_contato.setText(null);
-        txt_email.setText(null);
-        txt_senha.setText(null);
-        txt_redsenha.setText(null);
-        txt_nome.requestFocus();
+        funccli.limparCampos(txt_id, txt_nome, txt_contato, txt_email, txt_senha, txt_redsenha);
     }//GEN-LAST:event_btn_cancelActionPerformed
 
     private void txt_idActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_idActionPerformed
-        // TODO add your handling code here:
+        // DELETAR
     }//GEN-LAST:event_txt_idActionPerformed
 
     private void btn_deleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_deleteActionPerformed
         cli.setCli_id(Integer.valueOf(txt_id.getText()));
         cliDAO.removerCli(cli, this);
         funccli.limparCampos(txt_id, txt_nome, txt_contato, txt_email, txt_senha, txt_redsenha);
+        funccli.acaoCUD(btn_ok, btn_cancel, btn_delete, btn_update);
+        funccli.habilitarCampos(txt_id, txt_nome, txt_contato, txt_email, txt_senha, txt_redsenha);
     }//GEN-LAST:event_btn_deleteActionPerformed
 
     private void tabClienteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabClienteMouseClicked
@@ -266,9 +258,6 @@ public class JF_Cliente extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_updateActionPerformed
 
     
-    /**
-     * @param args the command line arguments
-     */
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
