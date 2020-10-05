@@ -123,7 +123,7 @@ public class Cliente {
     private String cli_contato;
     private String cli_email;
     private String cli_senha;
-    private Boolean isUpdating;
+    private Boolean isUpdating = false;
     private int cli_end;
 
 }

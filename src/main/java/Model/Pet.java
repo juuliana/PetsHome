@@ -94,6 +94,20 @@ public class Pet {
     public void setDono(String dono) {
         this.dono = dono;
     }
+
+    /**
+     * @return the isUpdating
+     */
+    public Boolean getIsUpdating() {
+        return isUpdating;
+    }
+
+    /**
+     * @param isUpdating the isUpdating to set
+     */
+    public void setIsUpdating(Boolean isUpdating) {
+        this.isUpdating = isUpdating;
+    }
     
     private int id;
     private String nome;
@@ -101,4 +115,5 @@ public class Pet {
     private String porte;
     private int idade;
     private String dono;    
+    private Boolean isUpdating = false;
 }
