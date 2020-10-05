@@ -230,7 +230,6 @@ public class JF_Funcionario extends javax.swing.JFrame {
         func.setFunc_nome(txt_nome.getText());
         func.setFunc_email(txt_email.getText());   
         func.setFunc_senha(txt_senha.getText());  
-        func.setFunc_id(Integer.parseInt(txt_id.getText()));
         
         if (txt_senha.getText().equals(txt_redsenha.getText())) {
             
@@ -239,6 +238,7 @@ public class JF_Funcionario extends javax.swing.JFrame {
                     funcfunc.acaoOkCancelar(btn_ok, btn_cancel, btn_delete, btn_update);
                     funcfunc.limparCampos(txt_id, txt_nome, txt_email, txt_senha, txt_redsenha);
                 } else {
+                    func.setFunc_id(Integer.parseInt(txt_id.getText()));
                     funcDAO.alterarFuncionario(func, this);
                     funcfunc.acaoOkCancelar(btn_ok, btn_cancel, btn_delete, btn_update);
                     funcfunc.desabilitarCampos(txt_id, txt_nome, txt_email, txt_senha, txt_redsenha);

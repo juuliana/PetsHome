@@ -44,11 +44,11 @@ public class JF_Pet extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         txt_idade = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
-        box_dono = new javax.swing.JComboBox<>();
         btn_ok = new javax.swing.JButton();
         btn_cancel = new javax.swing.JButton();
         btn_delete = new javax.swing.JButton();
         btn_update = new javax.swing.JButton();
+        txt_dono = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(510, 430));
@@ -125,13 +125,6 @@ public class JF_Pet extends javax.swing.JFrame {
 
         jLabel6.setText("* Nome do Dono");
 
-        box_dono.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "cliente 1 ", "cliente 2" }));
-        box_dono.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                box_donoActionPerformed(evt);
-            }
-        });
-
         btn_ok.setToolTipText("Adicionar");
         btn_ok.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -180,22 +173,22 @@ public class JF_Pet extends javax.swing.JFrame {
                             .addComponent(jLabel3)
                             .addComponent(txt_nome, javax.swing.GroupLayout.DEFAULT_SIZE, 163, Short.MAX_VALUE)
                             .addComponent(txt_raca))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 31, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 104, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel4)
-                            .addComponent(box_porte, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txt_idade, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel5)
-                            .addComponent(jLabel6)
-                            .addComponent(box_dono, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(89, 89, 89))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(btn_delete)
                         .addGap(18, 18, 18)
                         .addComponent(btn_update)
-                        .addGap(48, 48, 48))))
+                        .addGap(48, 48, 48))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(txt_dono)
+                            .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(box_porte, 0, 137, Short.MAX_VALUE)
+                            .addComponent(txt_idade, javax.swing.GroupLayout.DEFAULT_SIZE, 137, Short.MAX_VALUE)
+                            .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel6, javax.swing.GroupLayout.Alignment.LEADING))
+                        .addGap(89, 89, 89))))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -223,14 +216,14 @@ public class JF_Pet extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txt_raca, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(box_dono, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txt_dono, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(68, 68, 68)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btn_cancel, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(btn_delete)
                     .addComponent(btn_update, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(btn_ok))
-                .addContainerGap(21, Short.MAX_VALUE))
+                .addContainerGap(85, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Manutenção de Pets", jPanel2);
@@ -252,22 +245,28 @@ public class JF_Pet extends javax.swing.JFrame {
     private void btn_deleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_deleteActionPerformed
         pet.setId(Integer.valueOf(txt_id.getText()));
         petDAO.removerPet(pet, this);
-        funcpet.limparCampos(txt_id, txt_nome, txt_raca, box_porte, txt_idade, box_dono);
+        funcpet.limparCampos(txt_id, txt_nome, txt_raca, box_porte, txt_idade, txt_dono);
         funcpet.acaoCUD(btn_ok, btn_cancel, btn_delete, btn_update);
-        funcpet.habilitarCampos(txt_id, txt_nome, txt_raca, box_porte, txt_idade, box_dono);
+        funcpet.habilitarCampos(txt_id, txt_nome, txt_raca, box_porte, txt_idade, txt_dono);
     }//GEN-LAST:event_btn_deleteActionPerformed
 
     private void btn_okActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_okActionPerformed
-        funcpet.verificarCampos(txt_nome, txt_raca, box_porte, txt_idade, box_dono, this);
+        funcpet.verificarCampos(txt_nome, txt_raca, box_porte, txt_idade, txt_dono, this);
         
         pet.setNome(txt_nome.getText());
         pet.setIdade(Integer.parseInt(txt_idade.getText()));
         pet.setPorte(box_porte.getSelectedItem().toString());
         pet.setRaca(txt_raca.getText());
-        pet.setDono(box_dono.getSelectedItem().toString());
+        pet.setDono(txt_dono.getText());
+        pet.setId(Integer.parseInt(txt_id.getText()));
         
         try{
-            petDAO.inserirPet(pet, this);
+            if(pet.getIsUpdating()){
+                petDAO.alterarPet(pet, this);
+                pet.setIsUpdating(false);
+            }else{
+                petDAO.inserirPet(pet, this);
+            }
         }
         catch(Exception err){
             System.out.println(err);
@@ -275,17 +274,21 @@ public class JF_Pet extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_okActionPerformed
 
     private void btn_cancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_cancelActionPerformed
-        funcpet.limparCampos(txt_id, txt_nome, txt_raca, box_porte, txt_idade, box_dono);
+        funcpet.limparCampos(txt_id, txt_nome, txt_raca, box_porte, txt_idade, txt_dono);
+        pet.setIsUpdating(false);
     }//GEN-LAST:event_btn_cancelActionPerformed
 
     private void tabPetMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabPetMouseClicked
-        funcpet.enviarDados(tabPet, txt_id, txt_nome, txt_raca, box_porte, txt_idade, box_dono,  jTabbedPane1);
+        funcpet.enviarDados(tabPet, txt_id, txt_nome, txt_raca, box_porte, txt_idade, txt_dono,  jTabbedPane1);
         funcpet.acaoIrEdicao(btn_ok, btn_cancel, btn_delete, btn_update);
-        funcpet.desabilitarCampos(txt_id, txt_nome, txt_raca, box_porte, txt_idade, box_dono);
+        funcpet.desabilitarCampos(txt_id, txt_nome, txt_raca, box_porte, txt_idade, txt_dono);
     }//GEN-LAST:event_tabPetMouseClicked
 
     private void btn_updateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_updateActionPerformed
         // LUANNN
+        funcpet.habilitarCampos(txt_id, txt_nome, txt_raca, box_porte, txt_idade, txt_dono);
+        funcpet.acaoIrEdicao(btn_ok, btn_cancel, btn_delete, btn_ok);
+        pet.setIsUpdating(true);
     }//GEN-LAST:event_btn_updateActionPerformed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
@@ -304,10 +307,6 @@ public class JF_Pet extends javax.swing.JFrame {
     private void txt_nomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_nomeActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txt_nomeActionPerformed
-
-    private void box_donoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_box_donoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_box_donoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -345,7 +344,6 @@ public class JF_Pet extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JComboBox<String> box_dono;
     private javax.swing.JComboBox<String> box_porte;
     private javax.swing.JButton btn_cancel;
     private javax.swing.JButton btn_delete;
@@ -362,6 +360,7 @@ public class JF_Pet extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JTable tabPet;
+    private javax.swing.JTextField txt_dono;
     private javax.swing.JTextField txt_id;
     private javax.swing.JTextField txt_idade;
     private javax.swing.JTextField txt_nome;

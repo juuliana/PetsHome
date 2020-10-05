@@ -175,9 +175,9 @@ public class JF_Cliente extends javax.swing.JFrame {
             cli.setCli_nome(txt_nome.getText());
             cli.setCli_email(txt_email.getText());        
             cli.setCli_contato(txt_contato.getText()); 
-            cli.setCli_id(Integer.parseInt(txt_id.getText()));
 
             if(cli.getIsUpdating()){
+                cli.setCli_id(Integer.parseInt(txt_id.getText()));
                 cliDAO.alterarCli(cli, this);
 
                 cli.setIsUpdating(false);
