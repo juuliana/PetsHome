@@ -1,6 +1,7 @@
 package Controller;
 import Model.Cliente;
 import Model.Pet;
+import View.JF_Pet;
 import java.sql.*;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
@@ -74,23 +75,24 @@ public class PetDAO{
     }
     
     //LUANN
-    public void alterarCli(Cliente cliente, JFrame jfcliente){
-        String sql = "update cliente set nome=?, contato=?, email=? where id=?";
+    public void alterarPet(Pet pet, JF_Pet jfPet){
+        String sql = "update pet set nome=?, raca=?, porte=?, idade = ? where id=?";
     
         try{
             conexao = Connect.conectar();
             pst = conexao.prepareStatement(sql);
             
-            pst.setString(1, cliente.getCli_nome());
-            pst.setString(2, cliente.getCli_contato());
-            pst.setString(3, cliente.getCli_email());
-            pst.setInt(4, cliente.getCli_id());
+            pst.setString(1, pet.getNome());
+            pst.setString(2, pet.getRaca());
+            pst.setString(3, pet.getPorte());
+            pst.setInt(4, pet.getIdade());
+            pst.setInt(5, pet.getId());
             
             pst.execute();
             
-            JOptionPane.showMessageDialog(null, "Cliente alterado com sucesso!");
+            JOptionPane.showMessageDialog(null, "Pet alterado com sucesso!");
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(jfcliente, "Erro ao alterar cliente: " + e);
+            JOptionPane.showMessageDialog(jfPet, "Erro ao alterar pet: " + e);
         }
         
         Connect.desconector(conexao);
