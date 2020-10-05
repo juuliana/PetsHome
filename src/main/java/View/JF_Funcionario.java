@@ -105,9 +105,9 @@ public class JF_Funcionario extends javax.swing.JFrame {
 
         jLabel3.setText("* E-mail");
 
-        jLabel4.setText("Senha");
+        jLabel4.setText("* Senha");
 
-        jLabel5.setText("Redigite a senha");
+        jLabel5.setText("* Redigite a senha");
 
         btn_ok.setIcon(new javax.swing.ImageIcon("C:\\Users\\jumaj\\Desktop\\EDUVALE\\4°Termo\\Desenvolvimento de Software II\\Projeto Java\\correct.png")); // NOI18N
         btn_ok.setToolTipText("Adicionar");
@@ -155,34 +155,29 @@ public class JF_Funcionario extends javax.swing.JFrame {
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addGap(24, 24, 24)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(txt_nome, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 160, Short.MAX_VALUE)
-                        .addComponent(txt_email, javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.LEADING))
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jLabel3)
+                    .addComponent(jLabel1)
+                    .addComponent(jLabel2)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(4, 4, 4)
                         .addComponent(btn_ok, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btn_cancel))
-                    .addComponent(txt_id, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(txt_id, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txt_email, javax.swing.GroupLayout.DEFAULT_SIZE, 206, Short.MAX_VALUE)
+                    .addComponent(txt_nome))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jLabel4)
-                            .addComponent(jLabel5)
-                            .addComponent(txt_redsenha, javax.swing.GroupLayout.DEFAULT_SIZE, 147, Short.MAX_VALUE)
-                            .addComponent(txt_senha))
-                        .addGap(52, 52, 52))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(32, 32, 32)
                         .addComponent(btn_delete)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btn_update)
-                        .addContainerGap(35, Short.MAX_VALUE))))
+                        .addComponent(btn_update))
+                    .addComponent(jLabel5)
+                    .addComponent(jLabel4)
+                    .addComponent(txt_redsenha)
+                    .addComponent(txt_senha))
+                .addContainerGap(47, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -200,9 +195,9 @@ public class JF_Funcionario extends javax.swing.JFrame {
                     .addComponent(txt_nome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txt_senha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel5)
-                    .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.TRAILING))
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel3)
+                    .addComponent(jLabel5))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(txt_redsenha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -241,7 +236,6 @@ public class JF_Funcionario extends javax.swing.JFrame {
                     func.setFunc_id(Integer.parseInt(txt_id.getText()));
                     funcDAO.alterarFuncionario(func, this);
                     funcfunc.acaoOkCancelar(btn_ok, btn_cancel, btn_delete, btn_update);
-                    funcfunc.desabilitarCampos(txt_id, txt_nome, txt_email, txt_senha, txt_redsenha);
                     funcfunc.limparCampos(txt_id, txt_nome, txt_email, txt_senha, txt_redsenha);
                 }
 

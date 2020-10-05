@@ -6,10 +6,11 @@
     <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
       <Dimension value="[510, 430]"/>
     </Property>
+    <Property name="resizable" type="boolean" value="false"/>
   </Properties>
   <SyntheticProperties>
     <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
-    <SyntheticProperty name="generateCenter" type="boolean" value="false"/>
+    <SyntheticProperty name="generateCenter" type="boolean" value="true"/>
   </SyntheticProperties>
   <Events>
     <EventHandler event="windowOpened" listener="java.awt.event.WindowListener" parameters="java.awt.event.WindowEvent" handler="formWindowOpened"/>
@@ -29,12 +30,12 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Component id="jTabbedPane1" alignment="0" max="32767" attributes="0"/>
+          <Component id="jTabbedPane1" alignment="0" pref="502" max="32767" attributes="0"/>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Component id="jTabbedPane1" alignment="0" pref="389" max="32767" attributes="0"/>
+          <Component id="jTabbedPane1" alignment="0" pref="395" max="32767" attributes="0"/>
       </Group>
     </DimensionLayout>
   </Layout>
@@ -142,45 +143,52 @@
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" attributes="0">
-                              <Component id="btn_ok" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Component id="btn_cancel" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <EmptySpace min="10" pref="10" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
+                                          <Component id="jLabel2" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Component id="jLabel3" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Component id="txt_id" alignment="0" min="-2" pref="45" max="-2" attributes="0"/>
+                                      </Group>
+                                  </Group>
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <Component id="btn_ok" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Component id="btn_cancel" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                              </Group>
                           </Group>
-                          <Group type="102" alignment="0" attributes="0">
-                              <EmptySpace min="10" pref="10" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                  <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
-                                  <Component id="txt_id" min="-2" pref="52" max="-2" attributes="0"/>
-                                  <Component id="jLabel2" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jLabel3" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="txt_nome" alignment="0" pref="163" max="32767" attributes="0"/>
-                                  <Component id="txt_raca" alignment="0" max="32767" attributes="0"/>
+                          <Group type="102" alignment="1" attributes="0">
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="txt_raca" alignment="1" min="-2" pref="190" max="-2" attributes="0"/>
+                                  <Component id="txt_nome" alignment="1" min="-2" pref="190" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                       </Group>
-                      <EmptySpace pref="104" max="32767" attributes="0"/>
-                      <Group type="103" groupAlignment="1" attributes="0">
-                          <Group type="102" alignment="1" attributes="0">
-                              <Component id="btn_delete" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Component id="btn_update" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="48" max="-2" attributes="0"/>
-                          </Group>
-                          <Group type="102" alignment="1" attributes="0">
-                              <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                                  <Component id="txt_dono" max="32767" attributes="0"/>
-                                  <Component id="jLabel4" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="box_porte" alignment="1" pref="137" max="32767" attributes="0"/>
-                                  <Component id="txt_idade" alignment="1" pref="137" max="32767" attributes="0"/>
-                                  <Component id="jLabel5" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jLabel6" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace pref="41" max="32767" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="jLabel5" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="jLabel6" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="jLabel4" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                              <Component id="box_porte" alignment="0" max="32767" attributes="0"/>
+                              <Component id="txt_idade" alignment="0" max="32767" attributes="0"/>
+                              <Component id="txt_dono" alignment="0" max="32767" attributes="0"/>
+                              <Group type="102" alignment="1" attributes="0">
+                                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                                  <Component id="btn_delete" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="btn_update" min="-2" max="-2" attributes="0"/>
                               </Group>
-                              <EmptySpace min="-2" pref="89" max="-2" attributes="0"/>
                           </Group>
                       </Group>
+                      <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -205,7 +213,7 @@
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="txt_nome" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="txt_idade" alignment="3" min="-2" pref="20" max="-2" attributes="0"/>
+                          <Component id="txt_idade" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
@@ -217,14 +225,14 @@
                           <Component id="txt_raca" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="txt_dono" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace min="-2" pref="68" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="50" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="btn_cancel" alignment="1" min="-2" max="-2" attributes="0"/>
-                          <Component id="btn_delete" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="btn_cancel" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="btn_delete" alignment="1" min="-2" max="-2" attributes="0"/>
                           <Component id="btn_update" alignment="1" min="-2" max="-2" attributes="0"/>
                           <Component id="btn_ok" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace pref="85" max="32767" attributes="0"/>
+                      <EmptySpace pref="45" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -293,6 +301,9 @@
             </Component>
             <Component class="javax.swing.JButton" name="btn_ok">
               <Properties>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="2" name="C:\Users\jumaj\Desktop\EDUVALE\4&#xb0;Termo\Desenvolvimento de Software II\Projeto Java\correct.png"/>
+                </Property>
                 <Property name="toolTipText" type="java.lang.String" value="Adicionar"/>
               </Properties>
               <Events>
@@ -301,6 +312,9 @@
             </Component>
             <Component class="javax.swing.JButton" name="btn_cancel">
               <Properties>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="2" name="C:\Users\jumaj\Desktop\EDUVALE\4&#xb0;Termo\Desenvolvimento de Software II\Projeto Java\quit.png"/>
+                </Property>
                 <Property name="toolTipText" type="java.lang.String" value="Limpar Campos"/>
               </Properties>
               <Events>
@@ -309,6 +323,9 @@
             </Component>
             <Component class="javax.swing.JButton" name="btn_delete">
               <Properties>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="2" name="C:\Users\jumaj\Desktop\EDUVALE\4&#xb0;Termo\Desenvolvimento de Software II\Projeto Java\close.png"/>
+                </Property>
                 <Property name="toolTipText" type="java.lang.String" value="Deletar Pet"/>
               </Properties>
               <Events>
@@ -317,6 +334,9 @@
             </Component>
             <Component class="javax.swing.JButton" name="btn_update">
               <Properties>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="2" name="C:\Users\jumaj\Desktop\EDUVALE\4&#xb0;Termo\Desenvolvimento de Software II\Projeto Java\update.png"/>
+                </Property>
                 <Property name="toolTipText" type="java.lang.String" value="Fazer Altera&#xe7;&#xf5;es"/>
               </Properties>
               <Events>
