@@ -1,6 +1,6 @@
 package Controller;
-import Functions.FuncCliente;
 import Model.Cliente;
+import Model.Pet;
 import java.sql.*;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
@@ -12,7 +12,9 @@ public class PetDAO{
     //Atributos da Classe ClienteDAO
     Connection conexao = null;
     PreparedStatement pst = null;
+    PreparedStatement dono = null;
     ResultSet rs = null;
+    Pet pet = new Pet();
     
     //Método de Consultar Todos os Registros
     public void consultarTodos(JTable tabPet, JFrame jfpet){
@@ -35,28 +37,37 @@ public class PetDAO{
     //LUANN
     public void inserirPet(Pet pet, JFrame jfpet){
         
-        String sql = "insert cliente values (null, ?, ?, ?)";
+        String sql = "insert pet values (null, ?, ?, ?, ?, ?)";
+        String getDonoSql = "select id from cliente where nome = ?";
         
         try {
             conexao = Connect.conectar();
             pst = conexao.prepareStatement(sql);
+            dono = conexao.prepareStatement(getDonoSql);
+              
+            dono.setString(1, pet.getDono());
             
-            pst.setString(1, cliente.getCli_nome());
-            pst.setString(2, cliente.getCli_contato());
-            pst.setString(3, cliente.getCli_email());
-
+            ResultSet rsDono = dono.executeQuery();
             
-            if ((cliente.getCli_nome().isEmpty())||(cliente.getCli_contato().isEmpty())) {
+            if(rsDono.next()){
+                pst.setString(1, pet.getNome());
+                pst.setString(2, pet.getRaca());
+                pst.setString(3, pet.getPorte());
+                pst.setInt(4, pet.getIdade());
+                pst.setInt(5, rsDono.getInt("id"));
+            }
+            
+            if ((pet.getNome().isEmpty())|| pet.getPorte().isEmpty() || pet.getRaca().isEmpty()) {
                 JOptionPane.showMessageDialog(null, "Preencha todos os campos obrigatórios!");
             } else {
                 int adicionado = pst.executeUpdate();
                 
                 if(adicionado > 0){
-                    JOptionPane.showMessageDialog(null, "Cliente cadastrado com sucesso!");
+                    JOptionPane.showMessageDialog(null, "Pet cadastrado com sucesso!");
                 } 
             }   
         } catch (Exception e) {
-                    JOptionPane.showMessageDialog(jfcliente, "Erro ao inserir cliente: " + e);
+                    JOptionPane.showMessageDialog(jfpet, "Erro ao inserir pet: " + e);
         }
         
         Connect.desconector(conexao);
@@ -94,7 +105,7 @@ public class PetDAO{
             conexao = Connect.conectar();
             pst = conexao.prepareStatement(sql);
 
-            pst.setInt(1, pet.getPet_id());
+            pst.setInt(1, pet.getId());
 
             if(JOptionPane.showConfirmDialog(jfpet, "Deseja realmente excluir o Pet?", "Atenção", JOptionPane.YES_NO_CANCEL_OPTION)==0){
                 pst.execute();

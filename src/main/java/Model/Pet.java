@@ -84,14 +84,14 @@ public class Pet {
     /**
      * @return the dono
      */
-    public int getDono() {
+    public String getDono() {
         return dono;
     }
 
     /**
      * @param dono the dono to set
      */
-    public void setDono(int dono) {
+    public void setDono(String dono) {
         this.dono = dono;
     }
     
@@ -100,5 +100,5 @@ public class Pet {
     private String raca;
     private String porte;
     private int idade;
-    private int dono;    
+    private String dono;    
 }

@@ -52,7 +52,6 @@ public class JF_Pet extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(510, 430));
-        setPreferredSize(new java.awt.Dimension(510, 430));
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowOpened(java.awt.event.WindowEvent evt) {
                 formWindowOpened(evt);
@@ -105,19 +104,34 @@ public class JF_Pet extends javax.swing.JFrame {
 
         jLabel2.setText("* Nome");
 
+        txt_nome.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_nomeActionPerformed(evt);
+            }
+        });
+
         jLabel3.setText("* Raça");
 
         jLabel4.setText("* Porte");
 
         box_porte.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "p", "m", "g" }));
+        box_porte.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                box_porteActionPerformed(evt);
+            }
+        });
 
         jLabel5.setText("* Idade");
 
         jLabel6.setText("* Nome do Dono");
 
         box_dono.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "cliente 1 ", "cliente 2" }));
+        box_dono.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                box_donoActionPerformed(evt);
+            }
+        });
 
-        btn_ok.setIcon(new javax.swing.ImageIcon("C:\\Users\\jumaj\\Desktop\\EDUVALE\\4°Termo\\Desenvolvimento de Software II\\Projeto Java\\correct.png")); // NOI18N
         btn_ok.setToolTipText("Adicionar");
         btn_ok.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -125,7 +139,6 @@ public class JF_Pet extends javax.swing.JFrame {
             }
         });
 
-        btn_cancel.setIcon(new javax.swing.ImageIcon("C:\\Users\\jumaj\\Desktop\\EDUVALE\\4°Termo\\Desenvolvimento de Software II\\Projeto Java\\quit.png")); // NOI18N
         btn_cancel.setToolTipText("Limpar Campos");
         btn_cancel.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -133,7 +146,6 @@ public class JF_Pet extends javax.swing.JFrame {
             }
         });
 
-        btn_delete.setIcon(new javax.swing.ImageIcon("C:\\Users\\jumaj\\Desktop\\EDUVALE\\4°Termo\\Desenvolvimento de Software II\\Projeto Java\\close.png")); // NOI18N
         btn_delete.setToolTipText("Deletar Pet");
         btn_delete.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -141,7 +153,6 @@ public class JF_Pet extends javax.swing.JFrame {
             }
         });
 
-        btn_update.setIcon(new javax.swing.ImageIcon("C:\\Users\\jumaj\\Desktop\\EDUVALE\\4°Termo\\Desenvolvimento de Software II\\Projeto Java\\update.png")); // NOI18N
         btn_update.setToolTipText("Fazer Alterações");
         btn_update.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -247,7 +258,20 @@ public class JF_Pet extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_deleteActionPerformed
 
     private void btn_okActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_okActionPerformed
-        //LUANNN HAHA
+        funcpet.verificarCampos(txt_nome, txt_raca, box_porte, txt_idade, box_dono, this);
+        
+        pet.setNome(txt_nome.getText());
+        pet.setIdade(Integer.parseInt(txt_idade.getText()));
+        pet.setPorte(box_porte.getSelectedItem().toString());
+        pet.setRaca(txt_raca.getText());
+        pet.setDono(box_dono.getSelectedItem().toString());
+        
+        try{
+            petDAO.inserirPet(pet, this);
+        }
+        catch(Exception err){
+            System.out.println(err);
+        }
     }//GEN-LAST:event_btn_okActionPerformed
 
     private void btn_cancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_cancelActionPerformed
@@ -272,6 +296,18 @@ public class JF_Pet extends javax.swing.JFrame {
         petDAO.consultarTodos(tabPet, this);
         funcpet.acaoOkCancelar(btn_ok, btn_cancel, btn_delete, btn_update);
     }//GEN-LAST:event_jTabbedPane1StateChanged
+
+    private void box_porteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_box_porteActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_box_porteActionPerformed
+
+    private void txt_nomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_nomeActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txt_nomeActionPerformed
+
+    private void box_donoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_box_donoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_box_donoActionPerformed
 
     /**
      * @param args the command line arguments

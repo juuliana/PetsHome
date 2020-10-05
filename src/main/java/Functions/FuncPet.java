@@ -1,6 +1,7 @@
 package Functions;
 
 import Model.Cliente;
+import Model.Pet;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
@@ -19,10 +20,6 @@ public class FuncPet {
         porte.setSelectedIndex(1);
         idade.setText(null);
         dono.setSelectedIndex(1);
-        
-        Pet pet = new Pet();
-        
-        pet.setIsUpdating(false);
     }
 
     public boolean verificarCampos(JTextField txt_nome, JTextField txt_raca, JComboBox box_porte, JTextField txt_idade, JComboBox box_dono, JFrame jfusuario) {
@@ -37,7 +34,7 @@ public class FuncPet {
                 txt_raca.requestFocus();
                 return false;
             }else{
-                if(box_porte.getSelectedIndex().isEmpty()){
+                if(box_porte.getSelectedItem() != null){
                     JOptionPane.showMessageDialog(jfusuario, "Por favor, preencha o campo Porte");
                     box_porte.requestFocus();
                     return false;
@@ -47,7 +44,7 @@ public class FuncPet {
                         txt_idade.requestFocus();
                         return false;
                     }else{
-                        if(box_dono.getSelectedIndex().isEmpty()){
+                        if(box_dono.getSelectedItem() != null){
                             JOptionPane.showMessageDialog(jfusuario, "Por favor, preencha o campo Dono");
                             box_dono.requestFocus();
                             return false;
@@ -66,9 +63,9 @@ public class FuncPet {
         id.setText(tabCliente.getModel().getValueAt(linha, 0).toString());
         nome.setText(tabCliente.getModel().getValueAt(linha, 1).toString());
         raca.setText(tabCliente.getModel().getValueAt(linha, 2).toString());
-        porte.setSelectedIndex(tabCliente.getModel().getValueAt(linha, 3).toString());
+        porte.setSelectedIndex(Integer.parseInt(tabCliente.getModel().getValueAt(linha, 3).toString()));
         idade.setText(tabCliente.getModel().getValueAt(linha, 4).toString());
-        dono.setSelectedIndex(tabCliente.getModel().getValueAt(linha, 5).toString());
+        dono.setSelectedIndex(Integer.parseInt(tabCliente.getModel().getValueAt(linha, 5).toString()));
         
         pagina.setSelectedIndex(1);   
     }
