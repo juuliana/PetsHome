@@ -268,10 +268,10 @@ public class JF_Pet extends javax.swing.JFrame {
         pet.setPorte(box_porte.getSelectedItem().toString());
         pet.setRaca(txt_raca.getText());
         pet.setDono(txt_dono.getText());
-        pet.setId(Integer.parseInt(txt_id.getText()));
         
         try{
             if(pet.getIsUpdating()){
+                pet.setId(Integer.parseInt(txt_id.getText()));
                 petDAO.alterarPet(pet, this);
                 pet.setIsUpdating(false);
             }else{
