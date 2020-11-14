@@ -95,7 +95,7 @@ public class JF_Pet extends javax.swing.JFrame {
 
         jPanel1.add(jScrollPane1, java.awt.BorderLayout.CENTER);
 
-        jTabbedPane1.addTab("Consulta Pet", jPanel1);
+        jTabbedPane1.addTab("Consultar Pet", jPanel1);
 
         jPanel2.setPreferredSize(new java.awt.Dimension(524, 391));
 
@@ -235,7 +235,7 @@ public class JF_Pet extends javax.swing.JFrame {
                 .addContainerGap(45, Short.MAX_VALUE))
         );
 
-        jTabbedPane1.addTab("Manutenção de Pets", jPanel2);
+        jTabbedPane1.addTab("Cadastro e Manuntenção", jPanel2);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -273,9 +273,13 @@ public class JF_Pet extends javax.swing.JFrame {
             if(pet.getIsUpdating()){
                 pet.setId(Integer.parseInt(txt_id.getText()));
                 petDAO.alterarPet(pet, this);
+                funcpet.limparCampos(txt_id, txt_nome, txt_raca, box_porte, txt_idade, txt_dono);
+                funcpet.acaoCUD(btn_ok, btn_cancel, btn_delete, btn_update);
+                
                 pet.setIsUpdating(false);
             }else{
                 petDAO.inserirPet(pet, this);
+                funcpet.limparCampos(txt_id, txt_nome, txt_raca, box_porte, txt_idade, txt_dono);
             }
         }
         catch(Exception err){
@@ -296,7 +300,7 @@ public class JF_Pet extends javax.swing.JFrame {
 
     private void btn_updateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_updateActionPerformed
         funcpet.habilitarCampos(txt_id, txt_nome, txt_raca, box_porte, txt_idade, txt_dono);
-        funcpet.acaoIrEdicao(btn_ok, btn_cancel, btn_delete, btn_ok);
+        funcpet.acaoEdicao(btn_ok, btn_cancel, btn_delete, btn_update);
         pet.setIsUpdating(true);
     }//GEN-LAST:event_btn_updateActionPerformed
 

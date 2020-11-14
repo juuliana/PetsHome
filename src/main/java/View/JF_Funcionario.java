@@ -96,7 +96,7 @@ public class JF_Funcionario extends javax.swing.JFrame {
 
         jPanel1.add(tabFuncionario1, java.awt.BorderLayout.CENTER);
 
-        jTabbedPane1.addTab("Consulta Funcionário", jPanel1);
+        jTabbedPane1.addTab("Consultar Funcionário", jPanel1);
 
         jPanel2.setToolTipText("");
         jPanel2.setPreferredSize(new java.awt.Dimension(450, 150));
@@ -211,7 +211,7 @@ public class JF_Funcionario extends javax.swing.JFrame {
                 .addContainerGap(116, Short.MAX_VALUE))
         );
 
-        jTabbedPane1.addTab("Manutenção de Funcionários", jPanel2);
+        jTabbedPane1.addTab("Cadastro e Manutenção", jPanel2);
 
         getContentPane().add(jTabbedPane1, java.awt.BorderLayout.CENTER);
 

@@ -3,7 +3,6 @@ package View;
 import Controller.ClienteDAO;
 import Functions.FuncCliente;
 import Model.Cliente;
-import javax.swing.JOptionPane;
 
 public class JF_Cliente extends javax.swing.JFrame {
 
@@ -94,7 +93,7 @@ public class JF_Cliente extends javax.swing.JFrame {
 
         jPanel1.add(jScrollPane1, java.awt.BorderLayout.CENTER);
 
-        jTabbedPane1.addTab("Consulta Cliente", jPanel1);
+        jTabbedPane1.addTab("Consultar Cliente", jPanel1);
 
         jPanel2.setMinimumSize(new java.awt.Dimension(0, 0));
         jPanel2.setPreferredSize(new java.awt.Dimension(505, 150));
@@ -161,7 +160,7 @@ public class JF_Cliente extends javax.swing.JFrame {
         });
         jPanel2.add(btn_update, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 180, -1, -1));
 
-        jTabbedPane1.addTab("Manutenção de Clientes", jPanel2);
+        jTabbedPane1.addTab("Cadastro e Manutenção", jPanel2);
 
         getContentPane().add(jTabbedPane1, java.awt.BorderLayout.PAGE_START);
 

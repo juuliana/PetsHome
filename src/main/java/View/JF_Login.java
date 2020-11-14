@@ -8,7 +8,7 @@ public class JF_Login extends javax.swing.JFrame {
     Funcionario funcionario = new Funcionario();
     LoginDAO loginFunc = new LoginDAO();
     JF_Main jfMain = new JF_Main();
-
+    
     public JF_Login() {
         initComponents();
     }
