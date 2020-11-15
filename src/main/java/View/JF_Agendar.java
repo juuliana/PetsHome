@@ -53,7 +53,6 @@ public class JF_Agendar extends javax.swing.JFrame {
         btn_update = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(500, 390));
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowOpened(java.awt.event.WindowEvent evt) {
                 formWindowOpened(evt);
@@ -118,11 +117,22 @@ public class JF_Agendar extends javax.swing.JFrame {
         jLabel4.setText("* Tipo");
         jPanel2.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 110, -1, -1));
 
-        box_tipo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        box_tipo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Tosa", "Banho" }));
+        box_tipo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                box_tipoActionPerformed(evt);
+            }
+        });
         jPanel2.add(box_tipo, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 130, 170, -1));
 
         jLabel5.setText("* Valor");
         jPanel2.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 110, -1, -1));
+
+        txt_valor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_valorActionPerformed(evt);
+            }
+        });
         jPanel2.add(txt_valor, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 130, 160, -1));
 
         jLabel6.setText("* Nome do PET");
@@ -224,6 +234,25 @@ public class JF_Agendar extends javax.swing.JFrame {
         
         ag.setIsUpdating(true);
     }//GEN-LAST:event_btn_updateActionPerformed
+
+    private void txt_valorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_valorActionPerformed
+    }//GEN-LAST:event_txt_valorActionPerformed
+
+    private void box_tipoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_box_tipoActionPerformed
+        String tipo = box_tipo.getSelectedItem().toString();
+        if(tipo == "Tosa"){
+            txt_valor.setText("R$ 60,00");
+        }
+        else if(tipo == "Banho"){
+            txt_valor.setText("R$ 45,00");
+        }
+        else if(tipo == "Banho e tosa"){
+            txt_valor.setText("R$ 90,00");
+        }
+        else{
+            txt_valor.setText("");
+        }
+    }//GEN-LAST:event_box_tipoActionPerformed
 
     /**
      * @param args the command line arguments
