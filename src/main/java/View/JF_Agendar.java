@@ -53,6 +53,7 @@ public class JF_Agendar extends javax.swing.JFrame {
         btn_update = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setResizable(false);
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowOpened(java.awt.event.WindowEvent evt) {
                 formWindowOpened(evt);
@@ -117,7 +118,7 @@ public class JF_Agendar extends javax.swing.JFrame {
         jLabel4.setText("* Tipo");
         jPanel2.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 110, -1, -1));
 
-        box_tipo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Tosa", "Banho" }));
+        box_tipo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Tosa", "Banho", "Banho e tosa" }));
         box_tipo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 box_tipoActionPerformed(evt);
@@ -128,6 +129,7 @@ public class JF_Agendar extends javax.swing.JFrame {
         jLabel5.setText("* Valor");
         jPanel2.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 110, -1, -1));
 
+        txt_valor.setEditable(false);
         txt_valor.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txt_valorActionPerformed(evt);
@@ -176,6 +178,7 @@ public class JF_Agendar extends javax.swing.JFrame {
         getContentPane().add(jTabbedPane1, java.awt.BorderLayout.CENTER);
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
