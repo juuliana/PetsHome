@@ -36,9 +36,7 @@ public class JF_Agendar extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         txt_id = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
-        txt_data = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
-        txt_hora = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
         box_tipo = new javax.swing.JComboBox<>();
         jLabel5 = new javax.swing.JLabel();
@@ -51,6 +49,8 @@ public class JF_Agendar extends javax.swing.JFrame {
         btn_cancel = new javax.swing.JButton();
         btn_delete = new javax.swing.JButton();
         btn_update = new javax.swing.JButton();
+        txt_data = new javax.swing.JFormattedTextField();
+        txt_hora = new javax.swing.JFormattedTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
@@ -109,11 +109,9 @@ public class JF_Agendar extends javax.swing.JFrame {
 
         jLabel2.setText("* Data");
         jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 30, -1, -1));
-        jPanel2.add(txt_data, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 50, 120, -1));
 
         jLabel3.setText("* Horário");
         jPanel2.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 30, -1, -1));
-        jPanel2.add(txt_hora, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 50, 140, -1));
 
         jLabel4.setText("* Tipo");
         jPanel2.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 110, -1, -1));
@@ -126,7 +124,7 @@ public class JF_Agendar extends javax.swing.JFrame {
         });
         jPanel2.add(box_tipo, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 130, 170, -1));
 
-        jLabel5.setText("* Valor");
+        jLabel5.setText("Valor");
         jPanel2.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 110, -1, -1));
 
         txt_valor.setEditable(false);
@@ -172,6 +170,20 @@ public class JF_Agendar extends javax.swing.JFrame {
             }
         });
         jPanel2.add(btn_update, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 280, -1, -1));
+
+        try {
+            txt_data.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##/##/####")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
+        jPanel2.add(txt_data, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 50, 120, -1));
+
+        try {
+            txt_hora.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##:##")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
+        jPanel2.add(txt_hora, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 50, 140, -1));
 
         jTabbedPane1.addTab("Cadastro e Manutenção", jPanel2);
 
@@ -311,8 +323,8 @@ public class JF_Agendar extends javax.swing.JFrame {
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JTable tabAgendamento;
     private javax.swing.JTextField txt_cliente;
-    private javax.swing.JTextField txt_data;
-    private javax.swing.JTextField txt_hora;
+    private javax.swing.JFormattedTextField txt_data;
+    private javax.swing.JFormattedTextField txt_hora;
     private javax.swing.JTextField txt_id;
     private javax.swing.JTextField txt_pet;
     private javax.swing.JTextField txt_valor;
