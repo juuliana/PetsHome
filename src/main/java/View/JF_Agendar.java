@@ -133,7 +133,7 @@ public class JF_Agendar extends javax.swing.JFrame {
                 txt_valorActionPerformed(evt);
             }
         });
-        jPanel2.add(txt_valor, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 130, 160, -1));
+        jPanel2.add(txt_valor, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 130, 170, -1));
 
         jLabel6.setText("* Nome do PET");
         jPanel2.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 190, -1, -1));
@@ -141,35 +141,39 @@ public class JF_Agendar extends javax.swing.JFrame {
 
         jLabel7.setText("* Nome do Cliente");
         jPanel2.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 190, -1, -1));
-        jPanel2.add(txt_cliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 210, 160, -1));
+        jPanel2.add(txt_cliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 210, 170, -1));
 
+        btn_ok.setIcon(new javax.swing.ImageIcon("C:\\Users\\jumaj\\Desktop\\EDUVALE\\4°Termo\\Desenvolvimento de Software II\\Projeto Java\\correct.png")); // NOI18N
         btn_ok.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_okActionPerformed(evt);
             }
         });
-        jPanel2.add(btn_ok, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 280, -1, -1));
+        jPanel2.add(btn_ok, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 260, -1, -1));
 
+        btn_cancel.setIcon(new javax.swing.ImageIcon("C:\\Users\\jumaj\\Desktop\\EDUVALE\\4°Termo\\Desenvolvimento de Software II\\Projeto Java\\quit.png")); // NOI18N
         btn_cancel.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_cancelActionPerformed(evt);
             }
         });
-        jPanel2.add(btn_cancel, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 280, -1, -1));
+        jPanel2.add(btn_cancel, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 260, -1, -1));
 
+        btn_delete.setIcon(new javax.swing.ImageIcon("C:\\Users\\jumaj\\Desktop\\EDUVALE\\4°Termo\\Desenvolvimento de Software II\\Projeto Java\\close.png")); // NOI18N
         btn_delete.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_deleteActionPerformed(evt);
             }
         });
-        jPanel2.add(btn_delete, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 280, -1, -1));
+        jPanel2.add(btn_delete, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 260, -1, -1));
 
+        btn_update.setIcon(new javax.swing.ImageIcon("C:\\Users\\jumaj\\Desktop\\EDUVALE\\4°Termo\\Desenvolvimento de Software II\\Projeto Java\\update.png")); // NOI18N
         btn_update.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_updateActionPerformed(evt);
             }
         });
-        jPanel2.add(btn_update, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 280, -1, -1));
+        jPanel2.add(btn_update, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 260, -1, -1));
 
         try {
             txt_data.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##/##/####")));
@@ -183,7 +187,7 @@ public class JF_Agendar extends javax.swing.JFrame {
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
-        jPanel2.add(txt_hora, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 50, 140, -1));
+        jPanel2.add(txt_hora, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 50, 110, -1));
 
         jTabbedPane1.addTab("Cadastro e Manutenção", jPanel2);
 
