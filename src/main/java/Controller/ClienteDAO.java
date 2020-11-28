@@ -107,4 +107,22 @@ public class ClienteDAO {
             JOptionPane.showMessageDialog(jfcliente, "Erro ao excluir o cliente: "+e);
         }
     }
+    
+    public void selectClientePet(JTable table, String cliente_nome, String pet_nome){
+        String select = "Select c.id as 'id cliente', c.nome,p.id as 'id pet',  p.nome as pet, p.porte, p.raca, p.idade from cliente c "
+                + "inner join pet p on p.dono_id = c.id "
+                + "where c.nome like '%" + cliente_nome + "%' or "
+                + "p.nome like '%" + pet_nome + "%'";
+        try{
+            conexao = Connect.conectar();
+            pst = conexao.prepareStatement(select);
+            
+            rs = pst.executeQuery();
+            
+            table.setModel(DbUtils.resultSetToTableModel(rs));
+        }catch(Exception e){
+            System.out.println(e);
+        }
+        
+    }
 }

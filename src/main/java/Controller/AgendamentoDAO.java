@@ -1,9 +1,11 @@
 package Controller;
 
+import Functions.FormatDate;
 import Model.Agendamento;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.text.SimpleDateFormat;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
@@ -19,7 +21,7 @@ public class AgendamentoDAO {
     //Método de Consultar Todos os Registros
     public void consultarTodos(JTable tabAgendamento, JFrame jfagendamento){
         
-        String sql = "select id as ID, dia as Data, hora as Hora, tipo as Tipo, valor as Valor, pet_id as PET, cliente_id as Cliente from agendamento";
+        String sql = "select id as ID,  date_format(dia, '%d/%m/%Y') as Data, hora as Hora, tipo as Tipo, valor as Valor, pet_id as PET, cliente_id as Cliente from agendamento";
         
         try {
             conexao = Connect.conectar();
@@ -38,12 +40,13 @@ public class AgendamentoDAO {
     public void inserirAgendamento(Agendamento agendamento, JFrame jfagendamento){
         
         String sql = "insert agendamento values (null, ?, ?, ?, ?, ?, ?)";
+        FormatDate formatDate = new FormatDate();
         
         try {
             conexao = Connect.conectar();
             pst = conexao.prepareStatement(sql);
             
-            pst.setString(1, agendamento.getDia());
+            pst.setString(1, formatDate.DefaultToSqlDate(agendamento.getDia()));
             pst.setString(2, agendamento.getHora());
             pst.setDouble(3, agendamento.getValor());
             pst.setString(4, agendamento.getTipo());
@@ -51,7 +54,10 @@ public class AgendamentoDAO {
             pst.setString(6, agendamento.getPet());
 
             
-            if ((agendamento.getDia().isEmpty())||(agendamento.getHora().isEmpty())||(agendamento.getTipo().isEmpty())||(agendamento.getPet().isEmpty())) {
+            if (
+                    (agendamento.getDia().toString().isEmpty() ||(agendamento.getHora().isEmpty())
+                    ||(agendamento.getTipo().isEmpty())||(agendamento.getPet().isEmpty()))
+                ) {
                 JOptionPane.showMessageDialog(null, "Preencha todos os campos obrigatórios!");
             } else {
                 int adicionado = pst.executeUpdate();

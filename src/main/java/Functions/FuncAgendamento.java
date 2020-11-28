@@ -11,21 +11,18 @@ import javax.swing.JTextField;
 
 public class FuncAgendamento {
 
-    public void limparCampos(JTextField id,  JTextField data, JTextField hora, JComboBox tipo, JTextField valor, JTextField pet, JTextField cliente) {
-        id.setText(null);
+    public void limparCampos(  JTextField data, JTextField hora, JComboBox tipo, JTextField valor) {
         data.setText(null);
         hora.setText(null);
         tipo.setSelectedIndex(1);
         valor.setText(null);
-        pet.setText(null);
-        cliente.setText(null);
         
         Agendamento ag = new Agendamento();
         
         ag.setIsUpdating(false);
     }
 
-    public boolean verificarCampos(JTextField txt_data, JTextField txt_hora, JComboBox box_tipo, JTextField txt_pet, JFrame jfagendamento) {
+    public boolean verificarCampos(JTextField txt_data, JTextField txt_hora, JComboBox box_tipo, JFrame jfagendamento) {
 
         if (txt_data.getText().isEmpty()) {
             JOptionPane.showMessageDialog(jfagendamento, "Por favor, preencha o campo Data");
@@ -41,12 +38,6 @@ public class FuncAgendamento {
                     JOptionPane.showMessageDialog(jfagendamento, "Por favor, preencha o campo Tipo");
                     box_tipo.requestFocus();
                     return false;
-                }else{
-                    if(txt_pet.getText().isEmpty()){
-                        JOptionPane.showMessageDialog(jfagendamento, "Por favor, preencha o campo Pet");
-                        txt_pet.requestFocus();
-                        return false;
-                    }
                 }
             }
         }
@@ -54,40 +45,30 @@ public class FuncAgendamento {
         return true;
     }
    
-    public void enviarDados(JTable tabAgendamento, JTextField id,  JTextField data, JTextField hora, JComboBox tipo, JTextField valor, JTextField pet, JTextField cliente, JTabbedPane pagina){  
+    public void enviarDados(JTable tabAgendamento,   JTextField data, JTextField hora, JComboBox tipo, JTextField valor, JTabbedPane pagina){  
         int linha = tabAgendamento.getSelectedRow();
-        
-        id.setText(tabAgendamento.getModel().getValueAt(linha, 0).toString());
+
         data.setText(tabAgendamento.getModel().getValueAt(linha, 1).toString());
         hora.setText(tabAgendamento.getModel().getValueAt(linha, 2).toString());
         tipo.setSelectedItem(tabAgendamento.getModel().getValueAt(linha, 3).toString());
         valor.setText(tabAgendamento.getModel().getValueAt(linha, 4).toString());
-        pet.setText(tabAgendamento.getModel().getValueAt(linha, 5).toString());
-        cliente.setText(tabAgendamento.getModel().getValueAt(linha, 5).toString());
         
         pagina.setSelectedIndex(1);  
     }
 
-    public void habilitarCampos(JTextField id,  JTextField data, JTextField hora, JComboBox tipo, JTextField valor, JTextField pet, JTextField cliente) {
-
-        id.setEnabled(true);
+    public void habilitarCampos(  JTextField data, JTextField hora, JComboBox tipo, JTextField valor) {
         data.setEnabled(true);
         hora.setEnabled(true);
         tipo.setEnabled(true);
         valor.setEnabled(true);
-        pet.setEnabled(true);
-        cliente.setEnabled(true);
+        
     }
 
-    public void desabilitarCampos(JTextField id,  JTextField data, JTextField hora, JComboBox tipo, JTextField valor, JTextField pet, JTextField cliente) {
-
-        id.setEnabled(false);
+    public void desabilitarCampos(  JTextField data, JTextField hora, JComboBox tipo, JTextField valor) {
         data.setEnabled(false);
         hora.setEnabled(false);
         tipo.setEnabled(false);
         valor.setEnabled(false);
-        pet.setEnabled(false);
-        cliente.setEnabled(false);
     }
 
     public void acaoCUD(JButton inserir, JButton cancelar, JButton deletar, JButton editar) {

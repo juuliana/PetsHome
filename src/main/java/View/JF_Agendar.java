@@ -1,8 +1,11 @@
 package View;
 
 import Controller.AgendamentoDAO;
+import Controller.ClienteDAO;
 import Functions.FuncAgendamento;
 import Model.Agendamento;
+import java.sql.Date;
+import java.text.SimpleDateFormat;
 
 public class JF_Agendar extends javax.swing.JFrame {
 
@@ -33,24 +36,23 @@ public class JF_Agendar extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         tabAgendamento = new javax.swing.JTable();
         jPanel2 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
-        txt_id = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         box_tipo = new javax.swing.JComboBox<>();
         jLabel5 = new javax.swing.JLabel();
         txt_valor = new javax.swing.JTextField();
-        jLabel6 = new javax.swing.JLabel();
-        txt_pet = new javax.swing.JTextField();
-        jLabel7 = new javax.swing.JLabel();
-        txt_cliente = new javax.swing.JTextField();
         btn_ok = new javax.swing.JButton();
         btn_cancel = new javax.swing.JButton();
         btn_delete = new javax.swing.JButton();
         btn_update = new javax.swing.JButton();
         txt_data = new javax.swing.JFormattedTextField();
         txt_hora = new javax.swing.JFormattedTextField();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
+        jLabel8 = new javax.swing.JLabel();
+        jTextField1 = new javax.swing.JTextField();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
@@ -101,31 +103,25 @@ public class JF_Agendar extends javax.swing.JFrame {
         jPanel2.setMinimumSize(new java.awt.Dimension(420, 270));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setText("ID");
-        jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 30, -1, -1));
-
-        txt_id.setEditable(false);
-        jPanel2.add(txt_id, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 50, 50, -1));
-
         jLabel2.setText("* Data");
-        jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 30, -1, -1));
+        jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 460, -1, -1));
 
         jLabel3.setText("* Horário");
-        jPanel2.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 30, -1, -1));
+        jPanel2.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 460, -1, -1));
 
         jLabel4.setText("* Tipo");
-        jPanel2.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 110, -1, -1));
+        jPanel2.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 460, -1, -1));
 
-        box_tipo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Tosa", "Banho", "Banho e tosa" }));
+        box_tipo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecione", "Tosa", "Banho", "Banho e tosa" }));
         box_tipo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 box_tipoActionPerformed(evt);
             }
         });
-        jPanel2.add(box_tipo, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 130, 170, -1));
+        jPanel2.add(box_tipo, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 480, 170, -1));
 
         jLabel5.setText("Valor");
-        jPanel2.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 110, -1, -1));
+        jPanel2.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(920, 460, -1, -1));
 
         txt_valor.setEditable(false);
         txt_valor.addActionListener(new java.awt.event.ActionListener() {
@@ -133,61 +129,96 @@ public class JF_Agendar extends javax.swing.JFrame {
                 txt_valorActionPerformed(evt);
             }
         });
-        jPanel2.add(txt_valor, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 130, 170, -1));
+        jPanel2.add(txt_valor, new org.netbeans.lib.awtextra.AbsoluteConstraints(920, 480, 170, -1));
 
-        jLabel6.setText("* Nome do PET");
-        jPanel2.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 190, -1, -1));
-        jPanel2.add(txt_pet, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 210, 170, -1));
-
-        jLabel7.setText("* Nome do Cliente");
-        jPanel2.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 190, -1, -1));
-        jPanel2.add(txt_cliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 210, 170, -1));
-
-        btn_ok.setIcon(new javax.swing.ImageIcon("C:\\Users\\jumaj\\Desktop\\EDUVALE\\4°Termo\\Desenvolvimento de Software II\\Projeto Java\\correct.png")); // NOI18N
         btn_ok.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_okActionPerformed(evt);
             }
         });
-        jPanel2.add(btn_ok, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 260, -1, -1));
+        jPanel2.add(btn_ok, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 530, -1, -1));
 
-        btn_cancel.setIcon(new javax.swing.ImageIcon("C:\\Users\\jumaj\\Desktop\\EDUVALE\\4°Termo\\Desenvolvimento de Software II\\Projeto Java\\quit.png")); // NOI18N
         btn_cancel.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_cancelActionPerformed(evt);
             }
         });
-        jPanel2.add(btn_cancel, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 260, -1, -1));
+        jPanel2.add(btn_cancel, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 530, -1, -1));
 
-        btn_delete.setIcon(new javax.swing.ImageIcon("C:\\Users\\jumaj\\Desktop\\EDUVALE\\4°Termo\\Desenvolvimento de Software II\\Projeto Java\\close.png")); // NOI18N
         btn_delete.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_deleteActionPerformed(evt);
             }
         });
-        jPanel2.add(btn_delete, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 260, -1, -1));
+        jPanel2.add(btn_delete, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 530, -1, -1));
 
-        btn_update.setIcon(new javax.swing.ImageIcon("C:\\Users\\jumaj\\Desktop\\EDUVALE\\4°Termo\\Desenvolvimento de Software II\\Projeto Java\\update.png")); // NOI18N
         btn_update.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_updateActionPerformed(evt);
             }
         });
-        jPanel2.add(btn_update, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 260, -1, -1));
+        jPanel2.add(btn_update, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 530, -1, -1));
 
         try {
             txt_data.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##/##/####")));
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
-        jPanel2.add(txt_data, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 50, 120, -1));
+        jPanel2.add(txt_data, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 480, 120, -1));
 
         try {
             txt_hora.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##:##")));
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
-        jPanel2.add(txt_hora, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 50, 110, -1));
+        jPanel2.add(txt_hora, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 480, 110, -1));
+
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null}
+            },
+            new String [] {
+                "Id Cliente", "Cliente", "Id Pet", "Pet", "Raca", "Porte", "Idade"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane2.setViewportView(jTable1);
+        if (jTable1.getColumnModel().getColumnCount() > 0) {
+            jTable1.getColumnModel().getColumn(2).setResizable(false);
+        }
+
+        jPanel2.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(32, 100, 1060, 330));
+
+        jLabel8.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel8.setText("Pesquisar Pet ou Cliente");
+        jPanel2.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 20, -1, -1));
+
+        jTextField1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField1ActionPerformed(evt);
+            }
+        });
+        jTextField1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jTextField1KeyPressed(evt);
+            }
+        });
+        jPanel2.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 50, 280, 30));
+
+        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
+        jLabel1.setText("Selecione");
+        jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 40, -1, -1));
 
         jTabbedPane1.addTab("Cadastro e Manutenção", jPanel2);
 
@@ -199,26 +230,30 @@ public class JF_Agendar extends javax.swing.JFrame {
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         agDAO.consultarTodos(tabAgendamento, this);
+        ClienteDAO clienteDao = new ClienteDAO();
+        
+        clienteDao.selectClientePet(jTable1, "", "");
     }//GEN-LAST:event_formWindowOpened
 
     private void btn_okActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_okActionPerformed
-        if (funcag.verificarCampos(txt_data, txt_hora, box_tipo, txt_pet, this) == true) {
-        
+        if (funcag.verificarCampos(txt_data, txt_hora, box_tipo, this) == true) {
+            
             ag.setDia(txt_data.getText());
             ag.setHora(txt_hora.getText());        
             ag.setTipo(box_tipo.getSelectedItem().toString());
-            ag.setPet(txt_pet.getText());
+            ag.setValor(Double.parseDouble(txt_valor.getText()));
+            ag.setPet(jTable1.getValueAt(jTable1.getSelectedRow(), 2).toString());
+            ag.setCliente(jTable1.getValueAt(jTable1.getSelectedRow(), 0).toString());
 
             if(ag.getIsUpdating()){
-                ag.setId(Integer.parseInt(txt_id.getText()));
                 agDAO.alterarAg(ag, this);
-                funcag.limparCampos(txt_id, txt_data, txt_hora, box_tipo, txt_valor, txt_pet, txt_cliente);
+                funcag.limparCampos(txt_data, txt_hora, box_tipo, txt_valor);
                 funcag.acaoCUD(btn_ok, btn_cancel, btn_delete, btn_update);
 
                 ag.setIsUpdating(false);
             }else{
                 agDAO.inserirAgendamento(ag, this);
-                funcag.limparCampos(txt_id, txt_data, txt_hora, box_tipo, txt_valor, txt_pet, txt_cliente);
+                funcag.limparCampos(txt_data, txt_hora, box_tipo, txt_valor);
             }
        }
     }//GEN-LAST:event_btn_okActionPerformed
@@ -229,27 +264,26 @@ public class JF_Agendar extends javax.swing.JFrame {
     }//GEN-LAST:event_jTabbedPane1StateChanged
 
     private void btn_cancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_cancelActionPerformed
-        funcag.limparCampos(txt_id, txt_data, txt_hora, box_tipo, txt_valor, txt_pet, txt_cliente);
+        funcag.limparCampos(txt_data, txt_hora, box_tipo, txt_valor);
     }//GEN-LAST:event_btn_cancelActionPerformed
 
     private void btn_deleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_deleteActionPerformed
-        ag.setId(Integer.valueOf(txt_id.getText()));
         agDAO.removerAg(ag, this);
-        funcag.limparCampos(txt_id, txt_data, txt_hora, box_tipo, txt_valor, txt_pet, txt_cliente);
+        funcag.limparCampos(txt_data, txt_hora, box_tipo, txt_valor);
         funcag.acaoCUD(btn_ok, btn_cancel, btn_delete, btn_update);
-        funcag.habilitarCampos(txt_id, txt_data, txt_hora, box_tipo, txt_valor, txt_pet, txt_cliente);
+        funcag.habilitarCampos(txt_data, txt_hora, box_tipo, txt_valor);
     }//GEN-LAST:event_btn_deleteActionPerformed
 
     private void tabAgendamentoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabAgendamentoMouseClicked
-        funcag.enviarDados(tabAgendamento, txt_id, txt_data, txt_hora, box_tipo, txt_valor, txt_pet, txt_cliente, jTabbedPane1);
+        funcag.enviarDados(tabAgendamento, txt_data, txt_hora, box_tipo, txt_valor, jTabbedPane1);
         funcag.acaoIrEdicao(btn_ok, btn_cancel, btn_delete, btn_update);
-        funcag.desabilitarCampos(txt_id, txt_data, txt_hora, box_tipo, txt_valor, txt_pet, txt_cliente);
+        funcag.desabilitarCampos(txt_data, txt_hora, box_tipo, txt_valor);
     }//GEN-LAST:event_tabAgendamentoMouseClicked
 
     private void btn_updateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_updateActionPerformed
         flag = 1;
         funcag.acaoEdicao(btn_ok, btn_cancel, btn_delete, btn_update);
-        funcag.habilitarCampos(txt_id, txt_data, txt_hora, box_tipo, txt_valor, txt_pet, txt_cliente);
+        funcag.habilitarCampos(txt_data, txt_hora, box_tipo, txt_valor);
         
         ag.setIsUpdating(true);
     }//GEN-LAST:event_btn_updateActionPerformed
@@ -260,18 +294,30 @@ public class JF_Agendar extends javax.swing.JFrame {
     private void box_tipoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_box_tipoActionPerformed
         String tipo = box_tipo.getSelectedItem().toString();
         if(tipo == "Tosa"){
-            txt_valor.setText("R$ 60,00");
+            txt_valor.setText("60.00");
         }
         else if(tipo == "Banho"){
-            txt_valor.setText("R$ 45,00");
+            txt_valor.setText("45.00");
         }
         else if(tipo == "Banho e tosa"){
-            txt_valor.setText("R$ 90,00");
+            txt_valor.setText("90.00");
         }
         else{
             txt_valor.setText("");
         }
     }//GEN-LAST:event_box_tipoActionPerformed
+
+    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField1ActionPerformed
+
+    private void jTextField1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField1KeyPressed
+        if(evt.getID() >= 0){
+            ClienteDAO clienteDao = new ClienteDAO();
+            
+            clienteDao.selectClientePet(jTable1, jTextField1.getText(), jTextField1.getText());
+        }
+    }//GEN-LAST:event_jTextField1KeyPressed
 
     /**
      * @param args the command line arguments
@@ -319,18 +365,17 @@ public class JF_Agendar extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTabbedPane jTabbedPane1;
+    private javax.swing.JTable jTable1;
+    private javax.swing.JTextField jTextField1;
     private javax.swing.JTable tabAgendamento;
-    private javax.swing.JTextField txt_cliente;
     private javax.swing.JFormattedTextField txt_data;
     private javax.swing.JFormattedTextField txt_hora;
-    private javax.swing.JTextField txt_id;
-    private javax.swing.JTextField txt_pet;
     private javax.swing.JTextField txt_valor;
     // End of variables declaration//GEN-END:variables
 }
