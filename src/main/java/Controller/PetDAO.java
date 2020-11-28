@@ -45,10 +45,11 @@ public class PetDAO{
             conexao = Connect.conectar();
             pst = conexao.prepareStatement(sql);
             dono = conexao.prepareStatement(getDonoSql);
-              
             dono.setString(1, pet.getDono());
+              
             
             ResultSet rsDono = dono.executeQuery();
+            
             
             if(rsDono.next()){
                 pst.setString(1, pet.getNome());
@@ -56,6 +57,8 @@ public class PetDAO{
                 pst.setString(3, pet.getPorte());
                 pst.setInt(4, pet.getIdade());
                 pst.setInt(5, rsDono.getInt("id"));
+            }else{
+                JOptionPane.showMessageDialog(jfpet, "Cliente não existente");
             }
             
             if ((pet.getNome().isEmpty())|| pet.getPorte().isEmpty() || pet.getRaca().isEmpty()) {
@@ -68,7 +71,7 @@ public class PetDAO{
                 } 
             }   
         } catch (Exception e) {
-                    JOptionPane.showMessageDialog(jfpet, "Erro ao inserir pet: " + e);
+                    System.out.println(e);
         }
         
         Connect.desconector(conexao);
