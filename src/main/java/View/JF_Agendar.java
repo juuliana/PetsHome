@@ -9,6 +9,7 @@ import java.awt.Component;
 import java.sql.Date;
 import java.text.SimpleDateFormat;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableCellRenderer;
 
@@ -252,14 +253,17 @@ public class JF_Agendar extends javax.swing.JFrame {
 
     private void btn_okActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_okActionPerformed
         if (funcag.verificarCampos(txt_data, txt_hora, box_tipo, box_pagamento, this) == true) {
-            
+           
             ag.setDia(txt_data.getText());
             ag.setHora(txt_hora.getText());        
             ag.setTipo(box_tipo.getSelectedItem().toString());
             ag.setPagamento(box_pagamento.getSelectedItem().toString());
             ag.setValor(Double.parseDouble(txt_valor.getText()));
-            ag.setPet(jTable1.getValueAt(jTable1.getSelectedRow(), 2).toString());
-            ag.setCliente(jTable1.getValueAt(jTable1.getSelectedRow(), 0).toString());
+            
+            if(jTable1.getSelectedRow() >= 0){
+                ag.setCliente(Integer.parseInt(jTable1.getValueAt(jTable1.getSelectedRow(), 0).toString()));
+                ag.setPet(Integer.parseInt(jTable1.getValueAt(jTable1.getSelectedRow(), 2).toString()));
+            }
 
             if(ag.getIsUpdating()){
                 agDAO.alterarAg(ag, this);
@@ -291,6 +295,7 @@ public class JF_Agendar extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_deleteActionPerformed
 
     private void tabAgendamentoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabAgendamentoMouseClicked
+        ag.setId(Integer.parseInt(tabAgendamento.getValueAt(tabAgendamento.getSelectedRow(), 0).toString()));
         funcag.enviarDados(tabAgendamento, txt_data, txt_hora, box_tipo, txt_valor, box_pagamento, jTabbedPane1);
         funcag.acaoIrEdicao(btn_ok, btn_cancel, btn_delete, btn_update);
         funcag.desabilitarCampos(txt_data, txt_hora, box_tipo, txt_valor, box_pagamento);
