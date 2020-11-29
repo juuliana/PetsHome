@@ -75,8 +75,8 @@ public class AgendamentoDAO {
     }
     
     public void alterarAg(Agendamento agendamento, JFrame jfagendamento){
-        String sql = "update agendamento set dia=?, hora=?, valor=?, tipo=?, pagamento=? where id=?";
-    
+        String sql = "update agendamento set dia=?, hora=?, valor=?, tipo=?, pagamento=?, cliente_id=?, pet_id=? where id=?";
+        
         try{
             conexao = Connect.conectar();
             pst = conexao.prepareStatement(sql);
@@ -86,7 +86,9 @@ public class AgendamentoDAO {
             pst.setDouble(3, agendamento.getValor());
             pst.setString(4, agendamento.getTipo());
             pst.setString(5, agendamento.getPagamento());
-            pst.setInt(6, agendamento.getId());
+            pst.setString(6, agendamento.getCliente());
+            pst.setString(7, agendamento.getPet());
+            pst.setInt(8, agendamento.getId());
             
             pst.execute();
             

@@ -287,19 +287,19 @@ public class JF_Agendar extends javax.swing.JFrame {
         agDAO.removerAg(ag, this);
         funcag.limparCampos(txt_data, txt_hora, box_tipo, txt_valor);
         funcag.acaoCUD(btn_ok, btn_cancel, btn_delete, btn_update);
-        funcag.habilitarCampos(txt_data, txt_hora, box_tipo, txt_valor);
+        funcag.habilitarCampos(txt_data, txt_hora, box_tipo, txt_valor, box_pagamento);
     }//GEN-LAST:event_btn_deleteActionPerformed
 
     private void tabAgendamentoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabAgendamentoMouseClicked
         funcag.enviarDados(tabAgendamento, txt_data, txt_hora, box_tipo, txt_valor, box_pagamento, jTabbedPane1);
         funcag.acaoIrEdicao(btn_ok, btn_cancel, btn_delete, btn_update);
-        funcag.desabilitarCampos(txt_data, txt_hora, box_tipo, txt_valor);
+        funcag.desabilitarCampos(txt_data, txt_hora, box_tipo, txt_valor, box_pagamento);
     }//GEN-LAST:event_tabAgendamentoMouseClicked
 
     private void btn_updateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_updateActionPerformed
         flag = 1;
         funcag.acaoEdicao(btn_ok, btn_cancel, btn_delete, btn_update);
-        funcag.habilitarCampos(txt_data, txt_hora, box_tipo, txt_valor);
+        funcag.habilitarCampos(txt_data, txt_hora, box_tipo, txt_valor, box_pagamento);
         
         ag.setIsUpdating(true);
     }//GEN-LAST:event_btn_updateActionPerformed

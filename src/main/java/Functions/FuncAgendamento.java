@@ -52,24 +52,26 @@ public class FuncAgendamento {
         hora.setText(tabAgendamento.getModel().getValueAt(linha, 2).toString());
         tipo.setSelectedItem(tabAgendamento.getModel().getValueAt(linha, 3).toString());
         valor.setText(tabAgendamento.getModel().getValueAt(linha, 4).toString());
-        pagamento.setSelectedItem(tabAgendamento.getModel().getValueAt(linha, 4).toString());
+        pagamento.setSelectedItem(tabAgendamento.getModel().getValueAt(linha, 5).toString());
         
         pagina.setSelectedIndex(1);  
     }
 
-    public void habilitarCampos(  JTextField data, JTextField hora, JComboBox tipo, JTextField valor) {
+    public void habilitarCampos(  JTextField data, JTextField hora, JComboBox tipo, JTextField valor, JComboBox pagamento) {
         data.setEnabled(true);
         hora.setEnabled(true);
         tipo.setEnabled(true);
         valor.setEnabled(true);
+        pagamento.setEnabled(true);
         
     }
 
-    public void desabilitarCampos(  JTextField data, JTextField hora, JComboBox tipo, JTextField valor) {
+    public void desabilitarCampos(  JTextField data, JTextField hora, JComboBox tipo, JTextField valor, JComboBox pagamento) {
         data.setEnabled(false);
         hora.setEnabled(false);
         tipo.setEnabled(false);
         valor.setEnabled(false);
+        pagamento.setEnabled(false);
     }
 
     public void acaoCUD(JButton inserir, JButton cancelar, JButton deletar, JButton editar) {
