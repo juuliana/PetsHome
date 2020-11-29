@@ -20,7 +20,7 @@ public class PetDAO{
     //Método de Consultar Todos os Registros
     public void consultarTodos(JTable tabPet, JFrame jfpet){
         
-        String sql = "select id as ID, nome as Nome, raca as Raça, porte as Porte, idade as Idade, dono_id as Dono from pet";
+        String sql = "select p.id as ID, p.nome as Nome, p.raca as Raça, p.porte as Porte, p.idade as Idade, c.nome as Dono from pet p inner join cliente c on p.dono_id = c.id";
         
         try {
             conexao = Connect.conectar();

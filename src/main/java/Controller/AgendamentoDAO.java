@@ -21,7 +21,7 @@ public class AgendamentoDAO {
     //Método de Consultar Todos os Registros
     public void consultarTodos(JTable tabAgendamento, JFrame jfagendamento){
         
-        String sql = "select id as ID,  date_format(dia, '%d/%m/%Y') as Data, hora as Hora, tipo as Tipo, valor as Valor, pet_id as PET, cliente_id as Cliente, pagamento as Pagamento from agendamento";
+        String sql = "select a.id as ID,  date_format(a.dia, '%d/%m/%Y') as Data, a.hora as Hora, a.tipo as Tipo, a.valor as Valor, p.nome as PET, c.nome as Cliente, a.pagamento as Pagamento from agendamento a inner join pet p on a.pet_id = p.id inner join cliente c on c.id = a.cliente_id";
         
         try {
             conexao = Connect.conectar();
