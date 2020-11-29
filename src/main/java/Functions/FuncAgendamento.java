@@ -34,7 +34,7 @@ public class FuncAgendamento {
                 txt_hora.requestFocus();
                 return false;
             }else{
-                if(box_tipo.getSelectedItem().toString().isEmpty()){
+                if(box_tipo.getSelectedItem().toString().equals("Selecione")){
                     JOptionPane.showMessageDialog(jfagendamento, "Por favor, preencha o campo Tipo");
                     box_tipo.requestFocus();
                     return false;

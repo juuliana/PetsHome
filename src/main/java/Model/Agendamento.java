@@ -77,28 +77,28 @@ public class Agendamento {
     /**
      * @return the cliente
      */
-    public String getCliente() {
+    public int getCliente() {
         return cliente;
     }
 
     /**
      * @param cliente the cliente to set
      */
-    public void setCliente(String cliente) {
+    public void setCliente(int cliente) {
         this.cliente = cliente;
     }
 
     /**
      * @return the pet
      */
-    public String getPet() {
+    public int getPet() {
         return pet;
     }
 
     /**
      * @param pet the pet to set
      */
-    public void setPet(String pet) {
+    public void setPet(int pet) {
         this.pet = pet;
     }
     
@@ -134,8 +134,8 @@ public class Agendamento {
     private String hora;
     private Double valor;
     private String tipo;
-    private String cliente;
-    private String pet;
+    private int cliente;
+    private int pet;
     private String pagamento;
     private Boolean isUpdating = false;
 }
