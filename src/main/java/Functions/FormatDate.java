@@ -1,7 +1,7 @@
 package Functions;
 
 public class FormatDate {
-    public String DefaultToSqlDate(String date){
+    public static String DefaultToSqlDate(String date){
         String[] dateSplitted = date.split("/");
         
         String dateFormated = dateSplitted[2] + "-" + dateSplitted[1] + "-" + dateSplitted[0];
@@ -9,7 +9,7 @@ public class FormatDate {
         return dateFormated;
     }
     
-    public String sqlDateToDefault(String date){
+    public static String sqlDateToDefault(String date){
         String[] dateSplitted = date.split("-");
         
         String dateFormated = dateSplitted[2] + "/" + dateSplitted[1] + "/" + dateSplitted[0];
