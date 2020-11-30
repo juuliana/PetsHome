@@ -140,6 +140,7 @@ public class JF_Agendar extends javax.swing.JFrame {
         });
         jPanel2.add(txt_valor, new org.netbeans.lib.awtextra.AbsoluteConstraints(920, 480, 170, -1));
 
+        btn_ok.setIcon(new javax.swing.ImageIcon("C:\\Users\\luang\\Documents\\projetos\\PetsHome\\src\\main\\java\\Images\\add.png")); // NOI18N
         btn_ok.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_okActionPerformed(evt);
@@ -147,6 +148,7 @@ public class JF_Agendar extends javax.swing.JFrame {
         });
         jPanel2.add(btn_ok, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 530, -1, -1));
 
+        btn_cancel.setIcon(new javax.swing.ImageIcon("C:\\Users\\luang\\Documents\\projetos\\PetsHome\\src\\main\\java\\Images\\quit.png")); // NOI18N
         btn_cancel.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_cancelActionPerformed(evt);
@@ -154,6 +156,7 @@ public class JF_Agendar extends javax.swing.JFrame {
         });
         jPanel2.add(btn_cancel, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 530, -1, -1));
 
+        btn_delete.setIcon(new javax.swing.ImageIcon("C:\\Users\\luang\\Documents\\projetos\\PetsHome\\src\\main\\java\\Images\\close.png")); // NOI18N
         btn_delete.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_deleteActionPerformed(evt);
@@ -161,6 +164,7 @@ public class JF_Agendar extends javax.swing.JFrame {
         });
         jPanel2.add(btn_delete, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 530, -1, -1));
 
+        btn_update.setIcon(new javax.swing.ImageIcon("C:\\Users\\luang\\Documents\\projetos\\PetsHome\\src\\main\\java\\Images\\update.png")); // NOI18N
         btn_update.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_updateActionPerformed(evt);

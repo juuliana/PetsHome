@@ -99,7 +99,7 @@ public class JF_Cliente extends javax.swing.JFrame {
         jPanel2.setPreferredSize(new java.awt.Dimension(505, 150));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        btn_ok.setIcon(new javax.swing.ImageIcon("C:\\Users\\jumaj\\Desktop\\EDUVALE\\4°Termo\\Desenvolvimento de Software II\\Projeto Java\\correct.png")); // NOI18N
+        btn_ok.setIcon(new javax.swing.ImageIcon("C:\\Users\\luang\\Documents\\projetos\\PetsHome\\src\\main\\java\\Images\\add.png")); // NOI18N
         btn_ok.setToolTipText("Adicionar");
         btn_ok.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btn_ok.addActionListener(new java.awt.event.ActionListener() {
@@ -109,7 +109,7 @@ public class JF_Cliente extends javax.swing.JFrame {
         });
         jPanel2.add(btn_ok, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 180, -1, -1));
 
-        btn_cancel.setIcon(new javax.swing.ImageIcon("C:\\Users\\jumaj\\Desktop\\EDUVALE\\4°Termo\\Desenvolvimento de Software II\\Projeto Java\\quit.png")); // NOI18N
+        btn_cancel.setIcon(new javax.swing.ImageIcon("C:\\Users\\luang\\Documents\\projetos\\PetsHome\\src\\main\\java\\Images\\quit.png")); // NOI18N
         btn_cancel.setToolTipText("Limpar Campos");
         btn_cancel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btn_cancel.addActionListener(new java.awt.event.ActionListener() {
@@ -142,7 +142,7 @@ public class JF_Cliente extends javax.swing.JFrame {
         jLabel2.setText("ID");
         jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 30, -1, -1));
 
-        btn_delete.setIcon(new javax.swing.ImageIcon("C:\\Users\\jumaj\\Desktop\\EDUVALE\\4°Termo\\Desenvolvimento de Software II\\Projeto Java\\close.png")); // NOI18N
+        btn_delete.setIcon(new javax.swing.ImageIcon("C:\\Users\\luang\\Documents\\projetos\\PetsHome\\src\\main\\java\\Images\\close.png")); // NOI18N
         btn_delete.setToolTipText("Deletar Cliente");
         btn_delete.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -151,7 +151,7 @@ public class JF_Cliente extends javax.swing.JFrame {
         });
         jPanel2.add(btn_delete, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 180, -1, -1));
 
-        btn_update.setIcon(new javax.swing.ImageIcon("C:\\Users\\jumaj\\Desktop\\EDUVALE\\4°Termo\\Desenvolvimento de Software II\\Projeto Java\\update.png")); // NOI18N
+        btn_update.setIcon(new javax.swing.ImageIcon("C:\\Users\\luang\\Documents\\projetos\\PetsHome\\src\\main\\java\\Images\\update.png")); // NOI18N
         btn_update.setToolTipText("Fazer Alterações");
         btn_update.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

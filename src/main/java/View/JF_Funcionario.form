@@ -234,7 +234,7 @@
             <Component class="javax.swing.JButton" name="btn_ok">
               <Properties>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="2" name="C:\Users\jumaj\Desktop\EDUVALE\4&#xb0;Termo\Desenvolvimento de Software II\Projeto Java\correct.png"/>
+                  <Image iconType="2" name="C:\Users\luang\Documents\projetos\PetsHome\src\main\java\Images\add.png"/>
                 </Property>
                 <Property name="toolTipText" type="java.lang.String" value="Adicionar"/>
                 <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
@@ -248,7 +248,7 @@
             <Component class="javax.swing.JButton" name="btn_cancel">
               <Properties>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="2" name="C:\Users\jumaj\Desktop\EDUVALE\4&#xb0;Termo\Desenvolvimento de Software II\Projeto Java\quit.png"/>
+                  <Image iconType="2" name="C:\Users\luang\Documents\projetos\PetsHome\src\main\java\Images\quit.png"/>
                 </Property>
                 <Property name="toolTipText" type="java.lang.String" value="Limpar Campos"/>
                 <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
@@ -262,7 +262,7 @@
             <Component class="javax.swing.JButton" name="btn_delete">
               <Properties>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="2" name="C:\Users\jumaj\Desktop\EDUVALE\4&#xb0;Termo\Desenvolvimento de Software II\Projeto Java\close.png"/>
+                  <Image iconType="2" name="C:\Users\luang\Documents\projetos\PetsHome\src\main\java\Images\close.png"/>
                 </Property>
                 <Property name="toolTipText" type="java.lang.String" value="Deletar Funcion&#xe1;rio"/>
                 <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
@@ -276,7 +276,7 @@
             <Component class="javax.swing.JButton" name="btn_update">
               <Properties>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="2" name="C:\Users\jumaj\Desktop\EDUVALE\4&#xb0;Termo\Desenvolvimento de Software II\Projeto Java\update.png"/>
+                  <Image iconType="2" name="C:\Users\luang\Documents\projetos\PetsHome\src\main\java\Images\update.png"/>
                 </Property>
                 <Property name="toolTipText" type="java.lang.String" value="Fazer Altera&#xe7;&#xf5;es"/>
                 <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">

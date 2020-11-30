@@ -110,7 +110,7 @@ public class JF_Funcionario extends javax.swing.JFrame {
 
         jLabel5.setText("* Redigite a senha");
 
-        btn_ok.setIcon(new javax.swing.ImageIcon("C:\\Users\\jumaj\\Desktop\\EDUVALE\\4°Termo\\Desenvolvimento de Software II\\Projeto Java\\correct.png")); // NOI18N
+        btn_ok.setIcon(new javax.swing.ImageIcon("C:\\Users\\luang\\Documents\\projetos\\PetsHome\\src\\main\\java\\Images\\add.png")); // NOI18N
         btn_ok.setToolTipText("Adicionar");
         btn_ok.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btn_ok.addActionListener(new java.awt.event.ActionListener() {
@@ -119,7 +119,7 @@ public class JF_Funcionario extends javax.swing.JFrame {
             }
         });
 
-        btn_cancel.setIcon(new javax.swing.ImageIcon("C:\\Users\\jumaj\\Desktop\\EDUVALE\\4°Termo\\Desenvolvimento de Software II\\Projeto Java\\quit.png")); // NOI18N
+        btn_cancel.setIcon(new javax.swing.ImageIcon("C:\\Users\\luang\\Documents\\projetos\\PetsHome\\src\\main\\java\\Images\\quit.png")); // NOI18N
         btn_cancel.setToolTipText("Limpar Campos");
         btn_cancel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btn_cancel.addActionListener(new java.awt.event.ActionListener() {
@@ -128,7 +128,7 @@ public class JF_Funcionario extends javax.swing.JFrame {
             }
         });
 
-        btn_delete.setIcon(new javax.swing.ImageIcon("C:\\Users\\jumaj\\Desktop\\EDUVALE\\4°Termo\\Desenvolvimento de Software II\\Projeto Java\\close.png")); // NOI18N
+        btn_delete.setIcon(new javax.swing.ImageIcon("C:\\Users\\luang\\Documents\\projetos\\PetsHome\\src\\main\\java\\Images\\close.png")); // NOI18N
         btn_delete.setToolTipText("Deletar Funcionário");
         btn_delete.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btn_delete.addActionListener(new java.awt.event.ActionListener() {
@@ -137,7 +137,7 @@ public class JF_Funcionario extends javax.swing.JFrame {
             }
         });
 
-        btn_update.setIcon(new javax.swing.ImageIcon("C:\\Users\\jumaj\\Desktop\\EDUVALE\\4°Termo\\Desenvolvimento de Software II\\Projeto Java\\update.png")); // NOI18N
+        btn_update.setIcon(new javax.swing.ImageIcon("C:\\Users\\luang\\Documents\\projetos\\PetsHome\\src\\main\\java\\Images\\update.png")); // NOI18N
         btn_update.setToolTipText("Fazer Alterações");
         btn_update.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btn_update.addActionListener(new java.awt.event.ActionListener() {
